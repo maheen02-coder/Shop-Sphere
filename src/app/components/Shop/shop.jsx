@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
+import './shop.css'
 const Shop = () => {
   return (
+    <main className="main_handeling_in_shop">
     <section className="min-h-screen overflow-hidden bg-[#EEEEEE] px-5 py-16 sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <div className="relative flex flex-col items-center lg:min-h-[520px] lg:flex-row">
@@ -35,6 +37,7 @@ const Shop = () => {
         </div>
       </div>
     </section>
+    </main>
   );
 };
 export default Shop;

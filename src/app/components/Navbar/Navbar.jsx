@@ -127,24 +127,21 @@ const Navbar = () => {
           menuOpen
             ? "max-h-96 opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
-        }`}
-      >
+        }`}>
         <nav className="flex flex-col px-6 py-3">
           {links.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]"
-            >
+              className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]">
               {link.name}
             </a>
           ))}
           <a
             href="/shop"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 border border-[#B89542] px-5 py-3 text-center text-xs tracking-[0.2em] text-[#E8C96A] transition duration-300 hover:bg-[#B89542] hover:text-[#100D11]"
-          >
+            className="mt-4 border border-[#B89542] px-5 py-3 text-center text-xs tracking-[0.2em] text-[#E8C96A] transition duration-300 hover:bg-[#B89542] hover:text-[#100D11]">
             EXPLORE COLLECTION
           </a>
         </nav>
