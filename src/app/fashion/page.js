@@ -14,7 +14,7 @@ const categories = [
     number: "02",
   },
   {
-    title: "Children",
+    title: "kids",
     description: "Find comfortable, stylish and playful pieces for little ones.",
     image: "/kids.PNG",
     number: "03",
