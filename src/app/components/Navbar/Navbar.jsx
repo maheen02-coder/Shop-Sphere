@@ -1,7 +1,14 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
+import { useCart } from "../../../context/CartContext";
+import { useAuth } from "../../../context/AuthContext";
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { count, hydrated } = useCart();
+  const { user } = useAuth();
+
   const links = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
@@ -9,31 +16,33 @@ const Navbar = () => {
     { name: "Our Story", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#B89542]/20 bg-[#100D11]/95 text-[#F1E8EB] backdrop-blur-xl">
-      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-11.5 sm:px-8 lg:px-12">
-        <a href="/" className="group flex shrink-0 flex-col">
+      <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-5 sm:px-8 sm:py-6 lg:px-12">
+        <Link href="/" className="group flex shrink-0 flex-col">
           <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-[#E8C96A] transition duration-300 group-hover:text-[#F5DFA0] sm:text-3xl">
             VELVETY
           </span>
           <span className="mt-1 text-center text-[9px] tracking-[0.55em] text-[#D9B8C0]">
             THORNS
           </span>
-        </a>
+        </Link>
         <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
           {links.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="relative py-2 text-sm tracking-wide text-[#D8CDD1] transition duration-300 hover:text-[#E8C96A] after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[#B89542] after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </nav>
         <div className="flex items-center gap-3 sm:gap-5">
-          <button
-            aria-label="Search"
+          <Link
+            href="/shop"
+            aria-label="Search products"
             className="hidden text-[#D9B8C0] transition duration-300 hover:scale-110 hover:text-[#E8C96A] sm:block"
           >
             <svg
@@ -50,8 +59,22 @@ const Navbar = () => {
                 d="m16 16 4 4"
               />
             </svg>
-          </button>
-          <a
+          </Link>
+          <Link
+            href={user ? "/account" : "/login"}
+            className="hidden text-[11px] uppercase tracking-[0.18em] text-[#D9B8C0] transition duration-300 hover:text-[#E8C96A] md:block"
+          >
+            {user ? user.name.split(" ")[0] : "Sign in"}
+          </Link>
+          {user?.role === "admin" && (
+            <Link
+              href="/admin"
+              className="hidden text-[11px] uppercase tracking-[0.18em] text-[#E8C96A] transition duration-300 hover:text-[#F5DFA0] md:block"
+            >
+              Admin
+            </Link>
+          )}
+          <Link
             href="/cart"
             aria-label="Shopping bag"
             className="relative text-[#D9B8C0] transition duration-300 hover:scale-110 hover:text-[#E8C96A]"
@@ -75,13 +98,18 @@ const Navbar = () => {
                 d="M9 9V6a3 3 0 0 1 6 0v3"
               />
             </svg>
-          </a>
-          <a
+            {hydrated && count > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#E8C96A] px-1 text-[9px] font-bold text-[#100D11]">
+                {count > 99 ? "99+" : count}
+              </span>
+            )}
+          </Link>
+          <Link
             href="/shop"
             className="hidden border border-[#B89542] px-5 py-2.5 text-xs tracking-[0.15em] text-[#E8C96A] transition duration-300 hover:bg-[#B89542] hover:text-[#100D11] sm:block"
           >
             EXPLORE
-          </a>
+          </Link>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation menu"
@@ -125,28 +153,55 @@ const Navbar = () => {
       <div
         className={`overflow-hidden border-t border-[#B89542]/10 transition-all duration-300 lg:hidden ${
           menuOpen
-            ? "max-h-96 opacity-100"
+            ? "max-h-[32rem] opacity-100"
             : "pointer-events-none max-h-0 opacity-0"
-        }`}>
+        }`}
+      >
         <nav className="flex flex-col px-6 py-3">
           {links.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]">
+              className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]"
+            >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a
+          <Link
+            href={user ? "/account" : "/login"}
+            onClick={() => setMenuOpen(false)}
+            className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]"
+          >
+            {user ? "My Account" : "Sign In"}
+          </Link>
+          <Link
+            href="/cart"
+            onClick={() => setMenuOpen(false)}
+            className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#D8CDD1] transition duration-300 hover:pl-2 hover:text-[#E8C96A]"
+          >
+            Shopping Bag ({hydrated ? count : 0})
+          </Link>
+          {user?.role === "admin" && (
+            <Link
+              href="/admin"
+              onClick={() => setMenuOpen(false)}
+              className="border-b border-[#B89542]/10 py-4 text-sm tracking-wider text-[#E8C96A] transition duration-300 hover:pl-2"
+            >
+              Admin Dashboard
+            </Link>
+          )}
+          <Link
             href="/shop"
             onClick={() => setMenuOpen(false)}
-            className="mt-4 border border-[#B89542] px-5 py-3 text-center text-xs tracking-[0.2em] text-[#E8C96A] transition duration-300 hover:bg-[#B89542] hover:text-[#100D11]">
+            className="mt-4 border border-[#B89542] px-5 py-3 text-center text-xs tracking-[0.2em] text-[#E8C96A] transition duration-300 hover:bg-[#B89542] hover:text-[#100D11]"
+          >
             EXPLORE COLLECTION
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
   );
 };
+
 export default Navbar;

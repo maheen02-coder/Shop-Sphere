@@ -20,8 +20,7 @@ const categories = [
     number: "03",
   },
 ];
-export default function FashionPage() {
-  
+export default function FashionPage() {  
   return (
     <main className="min-h-screen bg-[#100D11] px-5 py-16 text-[#F1E8EB] sm:px-8 sm:py-24 lg:px-12">
       <div className="mx-auto max-w-[1400px]">
@@ -85,10 +84,3 @@ export default function FashionPage() {
     </main>
   );
 }
-// export default function Fashion() {
-//   return (
-//     <div>
-//       <h1>Fashion Page</h1>
-//     </div>
-//   );
-// }
