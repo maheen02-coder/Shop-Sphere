@@ -72,7 +72,15 @@ const nextConfig = {
       });
     }
 
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      {
+        // Vercel serves .jfif as application/octet-stream, which its image
+        // optimizer rejects. JFIF files are JPEG, so advertise them correctly.
+        source: "/:path*.jfif",
+        headers: [{ key: "Content-Type", value: "image/jpeg" }],
+      },
+      { source: "/:path*", headers: securityHeaders },
+    ];
   },
   // Serve the API through the same origin so cookies and CORS never depend on
   // whichever port or host the frontend happens to run on.
