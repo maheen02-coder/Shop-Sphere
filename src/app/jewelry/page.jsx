@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
@@ -49,10 +50,14 @@ export default function JewelryPage() {
             key={category.title}
             className="group relative min-h-[430px] flex-1 overflow-hidden border border-[#B89542]/30 bg-[#181319] sm:min-h-[540px]"
           >
-            <img loading="lazy" decoding="async"
+            <Image
               src={category.image}
               alt={category.title}
-              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              loading={category.number === "01" ? "eager" : "lazy"}
+              fetchPriority={category.number === "01" ? "high" : "auto"}
+              className="object-cover transition duration-700 group-hover:scale-105"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />

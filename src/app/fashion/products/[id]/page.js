@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
@@ -58,10 +60,13 @@ export default function ProductDetailsPage() {
       <div className="mx-auto mt-8 flex max-w-6xl flex-col gap-10 md:flex-row lg:gap-16">
         <div className="w-full md:w-1/2">
           <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#19151B]">
-            <img loading="lazy" decoding="async"
+            <Image
               src={product.image}
               alt={product.name}
               className="h-[420px] w-full object-cover object-center md:h-[600px]"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           {product.label && (

@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 const collections = [
   {
@@ -57,10 +59,13 @@ export default function KenwoodPage() {
                   {collection.number}
                 </div>
                 <div className="aspect-[4/3] overflow-hidden p-6 sm:p-10">
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={collection.image}
                     alt={collection.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                    width={1200}
+                    height={1200}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
               </div>

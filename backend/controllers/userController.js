@@ -6,7 +6,7 @@ const Product = require("../models/Product");
 // @access  Private
 exports.getWishlist = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user._id).populate("wishlist");
+    const user = await User.findById(req.user._id).populate("wishlist").lean();
 
     res.status(200).json({
       success: true,
@@ -39,12 +39,12 @@ exports.addToWishlist = async (req, res, next) => {
       await user.save();
     }
 
-    const updatedUser = await User.findById(req.user._id).populate("wishlist");
+    await user.populate("wishlist");
 
     res.status(200).json({
       success: true,
       message: "Product added to wishlist.",
-      wishlist: updatedUser.wishlist,
+      wishlist: user.wishlist,
     });
   } catch (error) {
     next(error);
@@ -63,12 +63,12 @@ exports.removeFromWishlist = async (req, res, next) => {
     user.wishlist = user.wishlist.filter((id) => id.toString() !== productId);
     await user.save();
 
-    const updatedUser = await User.findById(req.user._id).populate("wishlist");
+    await user.populate("wishlist");
 
     res.status(200).json({
       success: true,
       message: "Product removed from wishlist.",
-      wishlist: updatedUser.wishlist,
+      wishlist: user.wishlist,
     });
   } catch (error) {
     next(error);

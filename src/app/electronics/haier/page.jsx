@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 export default function HaierPage() {
   return (
@@ -27,10 +28,13 @@ export default function HaierPage() {
           >
             <div className="border border-[#B89542]/40 rounded-2xl overflow-hidden bg-[#151116] hover:border-[#E8C96A] transition duration-300">
               <div className="h-80 overflow-hidden">
-                <img loading="lazy" decoding="async"
+                <Image
                   src="/haier-washing-machine-1.jfif"
                   alt="Haier Washing Machines"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6 text-center">
@@ -41,7 +45,7 @@ export default function HaierPage() {
                   Washing Machines
                 </h2>
                 <p className="text-[#B8AEB6] mt-3">
-                  Explore Haier's modern washing machines.
+                  Explore Haier&apos;s modern washing machines.
                 </p>
                 <span className="inline-block mt-5 text-[#E8C96A]">
                   Explore Collection →

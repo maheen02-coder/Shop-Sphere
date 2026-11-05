@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { categories, products } from "../data/product";
@@ -24,7 +26,7 @@ const filteredProducts =
         </Link>
         <section className="py-16 text-center sm:py-24">
           <p className="mb-5 text-[10px] font-semibold tracking-[0.4em] text-[#E8C96A] sm:text-xs">
-            VELVETY THORNS · WOMEN'S EDIT
+            VELVETY THORNS · WOMEN&apos;S EDIT
           </p>
           <h1 className="font-serif text-5xl font-normal sm:text-6xl lg:text-7xl">
             The Art of{" "}
@@ -44,7 +46,7 @@ const filteredProducts =
                 THE COLLECTION
               </p>
               <h2 className="mt-2 font-serif text-3xl">
-                Women's Selection
+                Women&apos;s Selection
               </h2>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -78,11 +80,13 @@ const filteredProducts =
                   aria-label={`View ${product.name} details`}
                 >
                   <div className="relative h-[300px] overflow-hidden bg-[#241D23] sm:h-[340px]">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.name}
-                      loading="lazy"
                       className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      width={1200}
+                      height={1200}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     {product.label && (
                       <span className="absolute left-3 top-3 bg-[#100D11]/85 px-3 py-2 text-[9px] tracking-[0.15em] text-[#E8C96A]">

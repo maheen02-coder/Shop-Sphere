@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/Navbar/Navbar";
 import ProductCard from "../components/ProductCard";
@@ -25,38 +25,53 @@ export default function ShopPage() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [reloadToken, setReloadToken] = useState(0);
 
   useEffect(() => {
-    apiFetch("/products/categories")
+    const controller = new AbortController();
+    apiFetch("/products/categories", { cacheMs: 300_000, signal: controller.signal })
       .then((data) => setCategories(data.categories || []))
-      .catch(() => setCategories([]));
+      .catch((err) => {
+        if (err.name !== "AbortError") setCategories([]);
+      });
+    return () => controller.abort();
   }, []);
 
-  const loadProducts = useCallback(async () => {
+  useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
+    const params = new URLSearchParams({ page: String(page), limit: "12", sortBy });
+    if (searchTerm.trim()) params.set("keyword", searchTerm.trim());
+    if (category !== "All") params.set("category", category);
+
     setLoading(true);
     setError("");
-    try {
-      const params = new URLSearchParams({ page: String(page), limit: "12", sortBy });
-      if (searchTerm.trim()) params.set("keyword", searchTerm.trim());
-      if (category !== "All") params.set("category", category);
-      const data = await apiFetch(`/products?${params.toString()}`);
-      setProducts(data.products || []);
-      setMeta({
-        totalCount: data.totalCount || 0,
-        totalPages: data.totalPages || 0,
-        currentPage: data.currentPage || 1,
-      });
-    } catch (err) {
-      setError(err.message || "Unable to load products.");
-      setProducts([]);
-    } finally {
-      setLoading(false);
-    }
-  }, [category, page, searchTerm, sortBy]);
 
-  useEffect(() => {
-    loadProducts();
-  }, [loadProducts]);
+    apiFetch(`/products?${params.toString()}`, {
+      cacheMs: 15_000,
+      signal: controller.signal,
+    })
+      .then((data) => {
+        if (!active) return;
+        setProducts(data.products || []);
+        setMeta({
+          totalCount: data.totalCount || 0,
+          totalPages: data.totalPages || 0,
+          currentPage: data.currentPage || 1,
+        });
+      })
+      .catch((err) => {
+        if (!active || err.name === "AbortError") return;
+        setError(err.message || "Unable to load products.");
+        setProducts([]);
+      })
+      .finally(() => active && setLoading(false));
+
+    return () => {
+      active = false;
+      controller.abort();
+    };
+  }, [category, page, searchTerm, sortBy, reloadToken]);
 
   const submitSearch = (event) => {
     event.preventDefault();
@@ -158,7 +173,7 @@ export default function ShopPage() {
             <div className="mt-8 border border-[#E2A0A0]/40 bg-[#2A181C] px-5 py-4 text-sm text-[#F2C4C4]">
               {error}.{" "}
               <button
-                onClick={loadProducts}
+                onClick={() => setReloadToken((token) => token + 1)}
                 className="underline underline-offset-4 hover:text-white"
               >
                 Retry

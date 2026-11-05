@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useCart } from "../../context/CartContext";
+import { useEffect, useRef, useState } from "react";
+import { useCartActions } from "../../context/CartContext";
 import { parsePrice } from "../../lib/format";
 
 export default function AddToCartButton({
@@ -12,8 +12,11 @@ export default function AddToCartButton({
   className = "",
   label = "Add to Cart",
 }) {
-  const { addItem } = useCart();
+  const { addItem } = useCartActions();
   const [added, setAdded] = useState(false);
+  const resetTimer = useRef(null);
+
+  useEffect(() => () => window.clearTimeout(resetTimer.current), []);
 
   const handleClick = () => {
     addItem(
@@ -27,7 +30,8 @@ export default function AddToCartButton({
       { quantity, size, color }
     );
     setAdded(true);
-    window.setTimeout(() => setAdded(false), 1600);
+    window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setAdded(false), 1600);
   };
 
   return (

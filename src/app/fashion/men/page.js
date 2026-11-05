@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { products } from "../data/product";
@@ -101,10 +103,13 @@ export default function MenPage() {
                 className="group block min-w-0"
               >
                 <div className="relative overflow-hidden border border-white/5 bg-[#19151B]">
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={product.image}
                     alt={product.name}
                     className="h-[230px] w-full object-cover object-center transition duration-700 group-hover:scale-105 sm:h-[300px] lg:h-[360px]"
+                    width={1200}
+                    height={1200}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {product.label && (
                     <span className="absolute left-2 top-2 border border-[#E8C96A]/50 bg-[#100D11]/90 px-2 py-2 text-[8px] tracking-widest text-[#E8C96A] sm:left-3 sm:top-3 sm:text-[9px]">

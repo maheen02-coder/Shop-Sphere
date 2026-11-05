@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import AddToCartButton from "../../../../components/AddToCartButton";
@@ -88,10 +90,13 @@ export default function StoveDetails() {
               0{product.id}
             </div>
             <div className="aspect-square p-8 sm:p-12">
-              <img loading="lazy" decoding="async"
+              <Image
                 src={product.image}
                 alt={product.name}
                 className="h-full w-full object-contain"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
             </div>
           </div>

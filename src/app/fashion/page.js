@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 const categories = [
   {
@@ -51,10 +53,13 @@ export default function FashionPage() {
               className="group w-full border border-[#B89542]/20 bg-[#19141A] p-3 transition-all duration-500 hover:-translate-y-2 hover:border-[#E8C96A]/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:w-[calc(50%-12px)] xl:w-[calc(33.333%-19px)]"
             >
               <div className="relative h-[340px] overflow-hidden bg-[#241D23] sm:h-[400px]">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={category.image}
                   alt={category.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#100D11]/80 via-transparent to-[#100D11]/10" />
                 <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center border border-[#E8C96A]/50 bg-[#100D11]/75 text-xs text-[#E8C96A]">

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -57,7 +59,7 @@ export default function RingDetails() {
           Product Not Found
         </h1>
         <Link href="/jewelry/womens/rings" className="text-[#B89542] hover:text-[#E8C96A]">
-          ← Back to Women's Rings
+          ← Back to Women&apos;s Rings
         </Link>
       </main>
     );
@@ -75,10 +77,13 @@ export default function RingDetails() {
 
         <div className="flex flex-col md:flex-row gap-12 items-start">
           <div className="w-full md:w-1/2 overflow-hidden rounded-2xl border border-[#B89542]/40">
-            <img loading="lazy" decoding="async"
+            <Image
               src={ring.image}
               alt={ring.name}
               className="w-full h-[420px] md:h-[560px] object-cover"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 

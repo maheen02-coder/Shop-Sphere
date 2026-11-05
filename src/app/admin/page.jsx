@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -587,9 +588,12 @@ export default function AdminPage() {
                       <tr key={product._id} className="border-b border-[#B89542]/10">
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
-                            <img loading="lazy" decoding="async"
+                            <Image
                               src={product.image}
                               alt={product.name}
+                              width={40}
+                              height={48}
+                              sizes="40px"
                               className="h-12 w-10 object-cover"
                             />
                             <div>

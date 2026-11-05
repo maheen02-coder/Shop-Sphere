@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
@@ -26,31 +27,39 @@ export default function ShopProductPage() {
   const [wishlistBusy, setWishlistBusy] = useState(false);
 
   useEffect(() => {
+    const controller = new AbortController();
     let active = true;
-    setLoading(true);
-    apiFetch(`/products/${id}`)
+    apiFetch(`/products/${id}`, { cacheMs: 15_000, signal: controller.signal })
       .then((data) => {
         if (!active) return;
         setProduct(data.product);
         setSize(data.product.sizes?.[0] || "");
         setColor(data.product.colors?.[0] || "");
       })
-      .catch((err) => active && setError(err.message || "Product not found."))
+      .catch((err) => {
+        if (!active || err.name === "AbortError") return;
+        setError(err.message || "Product not found.");
+      })
       .finally(() => active && setLoading(false));
     return () => {
       active = false;
+      controller.abort();
     };
   }, [id]);
 
   useEffect(() => {
-    if (!user) return;
-    apiFetch("/users/wishlist")
+    if (!user || !product?._id) return;
+    const controller = new AbortController();
+    apiFetch("/users/wishlist", { signal: controller.signal })
       .then((data) => {
         setWishlisted(
-          (data.wishlist || []).some((item) => item._id === product?._id)
+          (data.wishlist || []).some((item) => item._id === product._id)
         );
       })
-      .catch(() => {});
+      .catch((err) => {
+        if (err.name !== "AbortError") setWishlisted(false);
+      });
+    return () => controller.abort();
   }, [user, product?._id]);
 
   const handleAdd = () => {
@@ -143,16 +152,20 @@ export default function ShopProductPage() {
             </div>
           ) : (
             <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className="relative overflow-hidden border border-[#B89542]/25 bg-[#181419]">
+              <div className="relative h-[420px] overflow-hidden border border-[#B89542]/25 bg-[#181419] sm:h-[560px]">
                 {product.label && (
                   <span className="absolute left-5 top-5 z-10 border border-[#E8C96A]/50 bg-[#100D11]/80 px-3 py-1.5 text-[9px] tracking-[0.2em] text-[#E8C96A]">
                     {product.label}
                   </span>
                 )}
-                <img loading="lazy" decoding="async"
+                <Image
                   src={product.image}
                   alt={product.name}
-                  className="h-[420px] w-full object-cover sm:h-[560px]"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="eager"
+                  fetchPriority="high"
+                  className="object-cover"
                 />
               </div>
 

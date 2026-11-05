@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 const companies = [
   {
@@ -85,10 +87,13 @@ export default function ElectronicsPage() {
                   {company.number}
                 </div>
                 <div className="aspect-[4/5] overflow-hidden p-4 sm:p-6">
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={company.image}
                     alt={company.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                    width={1200}
+                    height={1200}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
               </div>

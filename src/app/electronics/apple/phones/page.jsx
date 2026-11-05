@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const products = [
@@ -53,10 +54,13 @@ export default function ApplePhones() {
               href={`/electronics/apple/phones/${product.id}`}
               className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
             >
-              <img loading="lazy" decoding="async"
+              <Image
                 src={product.image}
                 alt={product.name}
                 className="w-full h-[280px] object-cover"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
 
               <div className="p-6">

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 const categories = [
   {
@@ -82,11 +82,12 @@ const Main = () => {
                 className="flex h-full flex-col"
               >
                 <div className="relative h-72 overflow-hidden bg-[#241D23] sm:h-80">
-                  <img
+                  <Image
                     src={category.image}
                     alt={category.title}
-                    loading="lazy"
-                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#100D11]/55 via-transparent to-[#100D11]/10 transition-opacity duration-500 group-hover:opacity-70" />
                   <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center border border-[#E8C96A]/50 bg-[#100D11]/75 text-xs tracking-widest text-[#E8C96A] backdrop-blur-sm">

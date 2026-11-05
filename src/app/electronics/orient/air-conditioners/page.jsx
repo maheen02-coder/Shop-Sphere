@@ -1,6 +1,6 @@
-
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -71,10 +71,13 @@ export default function OrientAirConditionersPage() {
               className="group border border-[#B89542]/25 bg-[#151116] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(184,149,66,0.10)]"
             >
               <div className="h-[300px] overflow-hidden bg-[#0D0A0E]">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
 
@@ -118,10 +121,13 @@ export default function OrientAirConditionersPage() {
               >
                 ×
               </button>
-              <img loading="lazy" decoding="async"
+              <Image
                 src={selectedProduct.image}
                 alt={selectedProduct.name}
                 className="w-full h-72 object-cover"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
 
               <h2 className="text-2xl font-serif mt-6">

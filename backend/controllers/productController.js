@@ -91,7 +91,7 @@ exports.getProducts = async (req, res, next) => {
     const skip = (pageNum - 1) * limitNum;
 
     const [products, totalCount] = await Promise.all([
-      Product.find(query).sort(sortOption).skip(skip).limit(limitNum),
+      Product.find(query).sort(sortOption).skip(skip).limit(limitNum).lean(),
       Product.countDocuments(query),
     ]);
 
@@ -113,7 +113,7 @@ exports.getProducts = async (req, res, next) => {
 // @access  Public
 exports.getFeaturedProducts = async (req, res, next) => {
   try {
-    const products = await Product.find({ isFeatured: true }).limit(8);
+    const products = await Product.find({ isFeatured: true }).limit(8).lean();
     res.status(200).json({
       success: true,
       products,
@@ -152,7 +152,7 @@ exports.getCategories = async (req, res, next) => {
 // @access  Public
 exports.getProductById = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).lean();
 
     if (!product) {
       return res.status(404).json({
@@ -237,20 +237,18 @@ exports.createProduct = async (req, res, next) => {
 // @access  Private / Admin
 exports.updateProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
-
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: "Product not found.",
-      });
-    }
-
     const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true, runValidators: true }
     );
+
+    if (!updatedProduct) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found.",
+      });
+    }
 
     res.status(200).json({
       success: true,
@@ -267,7 +265,7 @@ exports.updateProduct = async (req, res, next) => {
 // @access  Private / Admin
 exports.deleteProduct = async (req, res, next) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
       return res.status(404).json({
@@ -275,8 +273,6 @@ exports.deleteProduct = async (req, res, next) => {
         message: "Product not found.",
       });
     }
-
-    await Product.findByIdAndDelete(req.params.id);
 
     res.status(200).json({
       success: true,

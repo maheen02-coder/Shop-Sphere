@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function WomensJewelry() {
@@ -13,11 +14,11 @@ export default function WomensJewelry() {
 
         <div className="text-center mb-14">
           <p className="text-[#B89542] uppercase tracking-[0.4em] text-sm mb-4">
-            The Women's Collection
+            The Women&apos;s Collection
           </p>
 
           <h1 className="text-5xl md:text-7xl font-semibold text-[#E8C96A] mb-5">
-            Women's Jewelry
+            Women&apos;s Jewelry
           </h1>
 
           <p className="max-w-2xl mx-auto text-[#B8AEB6] text-base md:text-lg leading-8">
@@ -31,10 +32,13 @@ export default function WomensJewelry() {
             href="/jewelry/womens/rings"
             className="group relative w-full md:w-[46%] overflow-hidden rounded-2xl border border-[#B89542]/50 bg-[#171318]"
           >
-            <img loading="lazy" decoding="async"
+            <Image
               src="/women-ring2.jfif"
               alt="Women's Rings"
               className="w-full h-[400px] object-cover transition duration-700 group-hover:scale-105"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
@@ -62,10 +66,13 @@ export default function WomensJewelry() {
             href="/jewelry/womens/necklace"
             className="group relative w-full md:w-[46%] overflow-hidden rounded-2xl border border-[#B89542]/50 bg-[#171318]"
           >
-            <img loading="lazy" decoding="async"
+            <Image
               src="/women-necklace2.jfif"
               alt="Women's Necklaces"
               className="w-full h-[400px] object-cover transition duration-700 group-hover:scale-105"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />

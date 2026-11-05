@@ -110,6 +110,12 @@ const productSchema = new mongoose.Schema(
   }
 );
 
+// Compound indexes for catalogue listing, sorting and category pages
+productSchema.index({ category: 1, createdAt: -1 });
+productSchema.index({ category: 1, subCategory: 1 });
+productSchema.index({ price: 1 });
+productSchema.index({ rating: -1 });
+
 // Auto-generate slug before saving
 productSchema.pre("save", function () {
   if (this.isModified("name") || !this.slug) {

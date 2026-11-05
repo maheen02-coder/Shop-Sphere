@@ -1,14 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { useCart } from "../../context/CartContext";
+import { memo, useEffect, useRef, useState } from "react";
+import { useCartActions } from "../../context/CartContext";
 import { formatPrice } from "../../lib/format";
 
-export default function ProductCard({ product }) {
-  const { addItem } = useCart();
+function ProductCard({ product }) {
+  const { addItem } = useCartActions();
   const [added, setAdded] = useState(false);
+  const resetTimer = useRef(null);
   const price = product.salePrice || product.price;
+
+  useEffect(() => () => window.clearTimeout(resetTimer.current), []);
 
   const handleAdd = (event) => {
     event.preventDefault();
@@ -27,18 +31,20 @@ export default function ProductCard({ product }) {
       }
     );
     setAdded(true);
-    window.setTimeout(() => setAdded(false), 1400);
+    window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setAdded(false), 1400);
   };
 
   return (
     <article className="group flex flex-col border border-[#B89542]/20 bg-[#19141A] p-3 transition-all duration-500 hover:-translate-y-1 hover:border-[#E8C96A]/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]">
       <Link href={`/shop/${product._id}`} className="flex h-full flex-col">
         <div className="relative h-64 overflow-hidden bg-[#241D23]">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
-            loading="lazy"
-            className="h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
           />
           {product.label && (
             <span className="absolute left-3 top-3 border border-[#E8C96A]/50 bg-[#100D11]/80 px-2.5 py-1 text-[9px] tracking-[0.18em] text-[#E8C96A]">
@@ -89,3 +95,5 @@ export default function ProductCard({ product }) {
     </article>
   );
 }
+
+export default memo(ProductCard);

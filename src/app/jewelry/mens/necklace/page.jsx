@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 
 const necklaces = [
@@ -40,15 +42,15 @@ export default function MensNecklaces() {
           href="/jewelry/mens"
           className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#B8AEB6] hover:text-[#E8C96A] transition mb-10"
         >
-          <span>←</span> Back to Men's Jewelry
+          <span>←</span> Back to Men&apos;s Jewelry
         </Link>
 
         <header className="text-center mb-14">
           <p className="text-xs uppercase tracking-[0.4em] text-[#E8C96A] mb-4">
-            ShopSphere Men's Collection
+            ShopSphere Men&apos;s Collection
           </p>
           <h1 className="text-4xl sm:text-6xl font-serif text-[#F1E8EB]">
-            Men's <span className="text-[#E8C96A]">Necklaces</span>
+            Men&apos;s <span className="text-[#E8C96A]">Necklaces</span>
           </h1>
           <p className="max-w-2xl mx-auto text-[#B8AEB6] text-sm sm:text-base leading-8 mt-5">
             Distinctive necklaces crafted to express individuality, confidence, and enduring craftsmanship.
@@ -63,10 +65,13 @@ export default function MensNecklaces() {
               className="group border border-[#B89542]/30 bg-[#181319] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(232,201,106,0.1)] flex flex-col"
             >
               <div className="relative h-[340px] overflow-hidden bg-[#100D11]">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-105"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <span className="absolute top-4 left-4 border border-[#E8C96A]/50 bg-[#100D11]/85 px-3 py-1.5 text-[9px] tracking-[0.2em] text-[#E8C96A]">
                   {item.tag}

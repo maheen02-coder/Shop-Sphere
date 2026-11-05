@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar/Navbar";
 
@@ -68,10 +69,14 @@ export default function CollectionsPage() {
                 }`}
               >
                 <div className={`relative ${index === 0 ? "h-72 sm:h-80" : "h-72"}`}>
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={collection.image}
                     alt={collection.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#100D11] via-[#100D11]/35 to-transparent" />
                   <span className="absolute left-5 top-5 border border-[#E8C96A]/50 bg-[#100D11]/70 px-2.5 py-1 text-[9px] tracking-[0.2em] text-[#E8C96A]">

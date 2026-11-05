@@ -98,12 +98,15 @@ exports.createOrder = async (req, res, next) => {
     const shippingPrice = itemsPrice >= 5000 ? 0 : 200;
     const totalPrice = itemsPrice + shippingPrice;
 
-    // Atomically decrement stock
-    for (const item of verifiedOrderItems) {
-      await Product.findByIdAndUpdate(item.product, {
-        $inc: { stock: -item.quantity },
-      });
-    }
+    // Atomically decrement stock in a single round trip
+    await Product.bulkWrite(
+      verifiedOrderItems.map((item) => ({
+        updateOne: {
+          filter: { _id: item.product },
+          update: { $inc: { stock: -item.quantity } },
+        },
+      }))
+    );
 
     // Generate unique human-friendly order identifier
     const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
@@ -149,7 +152,7 @@ exports.createOrder = async (req, res, next) => {
 // @access  Private
 exports.getMyOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 });
+    const orders = await Order.find({ user: req.user._id }).sort({ createdAt: -1 }).lean();
 
     res.status(200).json({
       success: true,
@@ -168,7 +171,8 @@ exports.getOrderById = async (req, res, next) => {
   try {
     const order = await Order.findById(req.params.id)
       .populate("user", "name email phone")
-      .populate("orderItems.product", "name image price");
+      .populate("orderItems.product", "name image price")
+      .lean();
 
     if (!order) {
       return res.status(404).json({
@@ -223,12 +227,15 @@ exports.cancelMyOrder = async (req, res, next) => {
       });
     }
 
-    // Restore stock
-    for (const item of order.orderItems) {
-      await Product.findByIdAndUpdate(item.product, {
-        $inc: { stock: item.quantity },
-      });
-    }
+    // Restore stock in a single round trip
+    await Product.bulkWrite(
+      order.orderItems.map((item) => ({
+        updateOne: {
+          filter: { _id: item.product },
+          update: { $inc: { stock: item.quantity } },
+        },
+      }))
+    );
 
     order.orderStatus = "Cancelled";
     order.cancelledAt = new Date();
@@ -269,7 +276,8 @@ exports.getAllOrders = async (req, res, next) => {
         .populate("user", "name email phone")
         .sort({ createdAt: -1 })
         .skip(skip)
-        .limit(limitNum),
+        .limit(limitNum)
+        .lean(),
       Order.countDocuments(query),
     ]);
 
@@ -311,11 +319,14 @@ exports.updateOrderStatus = async (req, res, next) => {
 
     // If changing to Cancelled and was not cancelled before, restore stock
     if (orderStatus === "Cancelled" && order.orderStatus !== "Cancelled") {
-      for (const item of order.orderItems) {
-        await Product.findByIdAndUpdate(item.product, {
-          $inc: { stock: item.quantity },
-        });
-      }
+      await Product.bulkWrite(
+        order.orderItems.map((item) => ({
+          updateOne: {
+            filter: { _id: item.product },
+            update: { $inc: { stock: item.quantity } },
+          },
+        }))
+      );
       order.cancelledAt = new Date();
     }
 

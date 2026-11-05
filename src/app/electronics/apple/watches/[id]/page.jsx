@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import AddToCartButton from "../../../../components/AddToCartButton";
@@ -73,10 +75,13 @@ export default function AppleWatchDetail() {
         <div className="flex flex-col md:flex-row gap-12 items-center border border-[#B89542] rounded-2xl p-8 bg-[#171318]">
 
           <div className="w-full md:w-1/2">
-            <img loading="lazy" decoding="async"
+            <Image
               src={product.image}
               alt={product.name}
               className="w-full h-[450px] object-cover rounded-xl"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
 

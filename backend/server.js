@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const mongoose = require("mongoose");
 const helmet = require("helmet");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -121,7 +122,15 @@ const startServer = async () => {
 
   const shutdown = (signal) => {
     console.log(`\n[ShopSphere API] ${signal} received. Shutting down gracefully...`);
-    server.close(() => process.exit(0));
+    server.close(async () => {
+      try {
+        await mongoose.connection.close();
+      } finally {
+        process.exit(0);
+      }
+    });
+    // Do not hang forever if a connection refuses to close
+    setTimeout(() => process.exit(1), 10000).unref();
   };
 
   process.on("SIGINT", () => shutdown("SIGINT"));

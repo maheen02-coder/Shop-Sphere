@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import ProductCard from "./ProductCard";
@@ -18,14 +19,21 @@ export default function CategoryCollection({
   const [error, setError] = useState("");
 
   useEffect(() => {
+    const controller = new AbortController();
     let active = true;
-    setLoading(true);
-    apiFetch(`/products?category=${encodeURIComponent(category)}&limit=24&sortBy=newest`)
+    apiFetch(
+      `/products?category=${encodeURIComponent(category)}&limit=24&sortBy=newest`,
+      { cacheMs: 60_000, signal: controller.signal }
+    )
       .then((data) => active && setProducts(data.products || []))
-      .catch((err) => active && setError(err.message || "Unable to load collection."))
+      .catch((err) => {
+        if (!active || err.name === "AbortError") return;
+        setError(err.message || "Unable to load collection.");
+      })
       .finally(() => active && setLoading(false));
     return () => {
       active = false;
+      controller.abort();
     };
   }, [category]);
 
@@ -59,10 +67,14 @@ export default function CategoryCollection({
           </div>
           {image && (
             <div className="relative h-52 overflow-hidden border border-[#B89542]/20 bg-[#19141A] sm:h-64">
-              <img loading="lazy" decoding="async"
+              <Image
                 src={image}
                 alt={title}
-                className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                loading="eager"
+                fetchPriority="high"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#100D11]/60 to-transparent" />
             </div>

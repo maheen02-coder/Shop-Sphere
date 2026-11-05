@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 
 const rings = [
@@ -45,13 +47,13 @@ export default function MensRings() {
 
       <section className="mx-auto max-w-7xl pt-12">
         <p className="text-xs uppercase tracking-[0.35em] text-[#E8C96A]">
-          ShopSphere / Men's Jewelry / Rings
+          ShopSphere / Men&apos;s Jewelry / Rings
         </p>
 
         <div className="mt-5 flex flex-col justify-between gap-5 border-b border-[#B89542]/30 pb-8 sm:flex-row sm:items-end">
           <div>
             <h1 className="text-4xl font-light sm:text-6xl">
-              Men's <span className="text-[#E8C96A]">Rings</span>
+              Men&apos;s <span className="text-[#E8C96A]">Rings</span>
             </h1>
             <p className="mt-4 max-w-xl text-sm leading-7 text-[#B8AEB6]">
               Discover distinctive rings crafted to complement your style,
@@ -87,10 +89,13 @@ export default function MensRings() {
               className="group w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
             >
               <div className="relative h-[320px] overflow-hidden border border-[#B89542]/20 bg-[#181319] sm:h-[350px]">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={ring.image}
                   alt={ring.name}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
 
                 <span className="absolute left-3 top-3 border border-[#E8C96A]/50 bg-[#100D11]/85 px-3 py-2 text-[9px] tracking-[0.2em] text-[#E8C96A]">
@@ -108,7 +113,7 @@ export default function MensRings() {
                     {ring.name}
                   </h2>
                   <p className="mt-2 text-xs text-[#B8AEB6]">
-                    Men's Signature Collection
+                    Men&apos;s Signature Collection
                   </p>
                 </div>
 

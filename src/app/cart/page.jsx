@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar/Navbar";
 import { useCart } from "../../context/CartContext";
@@ -60,9 +61,12 @@ export default function CartPage() {
                     className="grid grid-cols-1 gap-5 border-b border-[#B89542]/10 px-5 py-5 last:border-b-0 sm:grid-cols-[2fr_1fr_1fr_auto] sm:items-center"
                   >
                     <div className="flex items-center gap-4">
-                      <img loading="lazy" decoding="async"
+                      <Image
                         src={item.image}
                         alt={item.name}
+                        width={80}
+                        height={96}
+                        sizes="80px"
                         className="h-24 w-20 shrink-0 object-cover"
                       />
                       <div>

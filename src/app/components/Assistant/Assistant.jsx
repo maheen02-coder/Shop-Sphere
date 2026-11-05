@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { apiFetch } from "../../../lib/api";
@@ -144,7 +145,7 @@ function toQuery(filters) {
 }
 
 async function searchProducts(filters) {
-  return apiFetch(`/products?${toQuery(filters)}`);
+  return apiFetch(`/products?${toQuery(filters)}`, { cacheMs: 30_000 });
 }
 
 async function answer(message) {
@@ -368,11 +369,12 @@ export default function Assistant() {
                           href={`/shop/${product._id}`}
                           className="flex gap-3 border border-[#B89542]/25 bg-[#100D11] p-2 transition hover:border-[#E8C96A]/60"
                         >
-                          <img
-                            loading="lazy"
-                            decoding="async"
+                          <Image
                             src={product.image}
                             alt={product.name}
+                            width={56}
+                            height={56}
+                            sizes="56px"
                             className="h-14 w-14 shrink-0 object-cover"
                           />
                           <span className="min-w-0 flex-1">

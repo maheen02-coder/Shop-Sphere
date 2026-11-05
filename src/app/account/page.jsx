@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -280,12 +281,12 @@ export default function AccountPage() {
                           key={`${item.product}-${item.size}-${item.color}`}
                           className="flex items-center gap-4 py-4"
                         >
-                          <img
+                          <Image
                             src={item.image}
                             alt={item.name}
-                            loading="lazy"
                             width={56}
                             height={64}
+                            sizes="56px"
                             className="h-16 w-14 object-cover"
                           />
                           <div className="min-w-0 flex-1">

@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import Link from "next/link";
 const microwaves = [
   {
@@ -81,10 +83,13 @@ export default function KenwoodMicrowavesPage() {
                   0{product.id}
                 </div>
                 <div className="aspect-square overflow-hidden p-6 sm:p-8">
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={product.image}
                     alt={product.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                    width={1200}
+                    height={1200}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
               </div>

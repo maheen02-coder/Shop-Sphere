@@ -1,4 +1,6 @@
 "use client";
+
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { products } from "../data/product";
@@ -83,10 +85,13 @@ export default function KidsPage() {
           <div className="group relative w-full max-w-[520px] lg:w-[48%]">
             <div className="absolute -inset-3 border border-[#E8C96A]/20 transition duration-700 group-hover:inset-0" />
             <div className="relative h-[390px] overflow-hidden sm:h-[540px]">
-              <img loading="lazy" decoding="async"
+              <Image
                 src="/kids.PNG"
                 alt="ShopSphere Kids Collection"
                 className="h-full w-full object-cover object-center transition duration-1000 group-hover:scale-105"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#100D11]/85 via-transparent to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9">
@@ -156,11 +161,13 @@ export default function KidsPage() {
               >
                 <div className="relative overflow-hidden border border-white/10 bg-[#19151B]">
                   <div className="relative h-[210px] overflow-hidden sm:h-[300px] lg:h-[350px]">
-                    <img
+                    <Image
                       src={item.image}
                       alt={item.name}
-                      loading="lazy"
                       className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+                      width={1200}
+                      height={1200}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     {item.label && (
                       <span className="absolute left-2 top-2 border border-[#E8C96A]/40 bg-[#100D11]/85 px-2 py-2 text-[7px] tracking-wider text-[#E8C96A] sm:left-3 sm:top-3 sm:text-[9px]">

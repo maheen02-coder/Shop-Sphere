@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useState } from "react";
@@ -79,10 +81,13 @@ export default function NecklaceDetails() {
 
         <div className="flex flex-col md:flex-row gap-12">
           <div className="w-full md:w-1/2 overflow-hidden rounded-2xl border border-[#B89542]/40">
-            <img loading="lazy" decoding="async"
+            <Image
               src={necklace.image}
               alt={necklace.name}
               className="w-full h-[420px] md:h-[560px] object-cover"
+              width={1200}
+              height={1200}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
 

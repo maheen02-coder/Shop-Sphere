@@ -1,10 +1,18 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { lineKey } from "../lib/format";
 
 const STORAGE_KEY = "cart";
-const CartContext = createContext(null);
+const CartStateContext = createContext(null);
+const CartActionsContext = createContext(null);
 
 const readStoredCart = () => {
   if (typeof window === "undefined") return [];
@@ -30,7 +38,7 @@ export function CartProvider({ children }) {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
 
-  const addItem = (product, options = {}) => {
+  const addItem = useCallback((product, options = {}) => {
     const id = product.id ?? product._id;
     if (id === undefined || id === null) return;
 
@@ -64,9 +72,9 @@ export function CartProvider({ children }) {
       }
       return [...current, entry];
     });
-  };
+  }, []);
 
-  const updateQuantity = (target, nextQuantity) => {
+  const updateQuantity = useCallback((target, nextQuantity) => {
     const key = lineKey(target);
     const quantity = Math.max(1, Number(nextQuantity) || 1);
     setItems((current) =>
@@ -74,14 +82,14 @@ export function CartProvider({ children }) {
         lineKey(item) === key ? { ...item, quantity } : item
       )
     );
-  };
+  }, []);
 
-  const removeItem = (target) => {
+  const removeItem = useCallback((target) => {
     const key = lineKey(target);
     setItems((current) => current.filter((item) => lineKey(item) !== key));
-  };
+  }, []);
 
-  const clearCart = () => setItems([]);
+  const clearCart = useCallback(() => setItems([]), []);
 
   const totals = useMemo(() => {
     const subtotal = items.reduce(
@@ -93,26 +101,40 @@ export function CartProvider({ children }) {
     return { subtotal, shipping, total: subtotal + shipping, count };
   }, [items]);
 
-  const value = useMemo(
-    () => ({
-      items,
-      hydrated,
-      addItem,
-      updateQuantity,
-      removeItem,
-      clearCart,
-      ...totals,
-    }),
+  // State and actions live in separate contexts so components that only add
+  // items (product cards, buy buttons) do not re-render when the bag changes.
+  const stateValue = useMemo(
+    () => ({ items, hydrated, ...totals }),
     [items, hydrated, totals]
   );
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  const actionsValue = useMemo(
+    () => ({ addItem, updateQuantity, removeItem, clearCart }),
+    [addItem, updateQuantity, removeItem, clearCart]
+  );
+
+  return (
+    <CartActionsContext.Provider value={actionsValue}>
+      <CartStateContext.Provider value={stateValue}>
+        {children}
+      </CartStateContext.Provider>
+    </CartActionsContext.Provider>
+  );
 }
 
 export function useCart() {
-  const context = useContext(CartContext);
-  if (!context) {
+  const state = useContext(CartStateContext);
+  const actions = useContext(CartActionsContext);
+  if (!state || !actions) {
     throw new Error("useCart must be used inside a CartProvider");
   }
-  return context;
+  return { ...state, ...actions };
+}
+
+export function useCartActions() {
+  const actions = useContext(CartActionsContext);
+  if (!actions) {
+    throw new Error("useCartActions must be used inside a CartProvider");
+  }
+  return actions;
 }

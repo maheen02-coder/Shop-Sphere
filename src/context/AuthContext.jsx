@@ -34,44 +34,44 @@ export function AuthProvider({ children }) {
     refresh();
   }, [refresh]);
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     const data = await apiFetch("/auth/login", {
       method: "POST",
       body: { email, password },
     });
     setUser(data.user);
     return data.user;
-  };
+  }, []);
 
-  const register = async (payload) => {
+  const register = useCallback(async (payload) => {
     const data = await apiFetch("/auth/register", {
       method: "POST",
       body: payload,
     });
     setUser(data.user);
     return data.user;
-  };
+  }, []);
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     try {
       await apiFetch("/auth/logout", { method: "POST" });
     } finally {
       setUser(null);
     }
-  };
+  }, []);
 
-  const updateProfile = async (payload) => {
+  const updateProfile = useCallback(async (payload) => {
     const data = await apiFetch("/auth/profile", {
       method: "PUT",
       body: payload,
     });
     setUser(data.user);
     return data.user;
-  };
+  }, []);
 
   const value = useMemo(
     () => ({ user, loading, login, register, logout, updateProfile, refresh }),
-    [user, loading, refresh]
+    [user, loading, login, register, logout, updateProfile, refresh]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

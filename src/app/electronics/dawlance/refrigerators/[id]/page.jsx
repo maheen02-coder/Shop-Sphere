@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AddToCartButton from "../../../../components/AddToCartButton";
@@ -96,10 +97,13 @@ export default async function ProductDetailsPage({ params }) {
           <div className="relative group">
             <div className="absolute -inset-3 border border-[#B89542]/20"></div>
             <div className="relative h-[500px] bg-[#151116] overflow-hidden">
-              <img loading="lazy" decoding="async"
+              <Image
                 src={product.image}
                 alt={product.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                width={1200}
+                height={1200}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#100D11]/70 via-transparent to-transparent"></div>
               <div className="absolute top-5 left-5">

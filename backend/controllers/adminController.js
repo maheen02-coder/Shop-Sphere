@@ -7,59 +7,55 @@ const Product = require("../models/Product");
 // @access  Private / Admin
 exports.getDashboardStats = async (req, res, next) => {
   try {
-    const [
-      totalOrders,
-      placedOrders,
-      processingOrders,
-      shippedOrders,
-      deliveredOrders,
-      cancelledOrders,
-      pendingPaymentOrders,
-      paidPaymentOrders,
-      totalProducts,
-      lowStockProducts,
-      totalUsers,
-      recentOrders,
-    ] = await Promise.all([
-      Order.countDocuments(),
-      Order.countDocuments({ orderStatus: "Placed" }),
-      Order.countDocuments({ orderStatus: "Processing" }),
-      Order.countDocuments({ orderStatus: "Shipped" }),
-      Order.countDocuments({ orderStatus: "Delivered" }),
-      Order.countDocuments({ orderStatus: "Cancelled" }),
-      Order.countDocuments({ paymentStatus: "PENDING" }),
-      Order.countDocuments({ paymentStatus: "PAID" }),
-      Product.countDocuments(),
-      Product.countDocuments({ stock: { $lte: 5 } }),
-      User.countDocuments(),
-      Order.find()
-        .populate("user", "name email")
-        .sort({ createdAt: -1 })
-        .limit(6),
-    ]);
-
-    // Aggregate revenue
-    const revenueData = await Order.aggregate([
-      { $match: { orderStatus: { $ne: "Cancelled" } } },
-      {
-        $group: {
-          _id: null,
-          totalRevenue: { $sum: "$totalPrice" },
-          totalCollected: {
-            $sum: {
-              $cond: [{ $eq: ["$paymentStatus", "PAID"] }, "$totalPrice", 0],
+    const [orderStats, totalProducts, lowStockProducts, totalUsers, recentOrders] =
+      await Promise.all([
+        Order.aggregate([
+          {
+            $facet: {
+              total: [{ $count: "value" }],
+              statusCounts: [{ $group: { _id: "$orderStatus", count: { $sum: 1 } } }],
+              paymentCounts: [{ $group: { _id: "$paymentStatus", count: { $sum: 1 } } }],
+              revenue: [
+                { $match: { orderStatus: { $ne: "Cancelled" } } },
+                {
+                  $group: {
+                    _id: null,
+                    totalRevenue: { $sum: "$totalPrice" },
+                    totalCollected: {
+                      $sum: {
+                        $cond: [{ $eq: ["$paymentStatus", "PAID"] }, "$totalPrice", 0],
+                      },
+                    },
+                    totalPending: {
+                      $sum: {
+                        $cond: [{ $eq: ["$paymentStatus", "PENDING"] }, "$totalPrice", 0],
+                      },
+                    },
+                  },
+                },
+              ],
             },
           },
-          totalPending: {
-            $sum: {
-              $cond: [{ $eq: ["$paymentStatus", "PENDING"] }, "$totalPrice", 0],
-            },
-          },
-        },
-      },
-    ]);
+        ]),
+        Product.countDocuments(),
+        Product.countDocuments({ stock: { $lte: 5 } }),
+        User.countDocuments(),
+        Order.find()
+          .populate("user", "name email")
+          .sort({ createdAt: -1 })
+          .limit(6)
+          .lean(),
+      ]);
 
-    const revenue = revenueData[0] || {
+    const facets = orderStats[0] || {};
+    const totalOrders = facets.total?.[0]?.value || 0;
+    const statusCounts = Object.fromEntries(
+      (facets.statusCounts || []).map((entry) => [entry._id, entry.count])
+    );
+    const paymentCounts = Object.fromEntries(
+      (facets.paymentCounts || []).map((entry) => [entry._id, entry.count])
+    );
+    const revenue = facets.revenue?.[0] || {
       totalRevenue: 0,
       totalCollected: 0,
       totalPending: 0,
@@ -73,15 +69,15 @@ exports.getDashboardStats = async (req, res, next) => {
         totalPending: revenue.totalPending,
         totalOrders,
         statusCounts: {
-          placed: placedOrders,
-          processing: processingOrders,
-          shipped: shippedOrders,
-          delivered: deliveredOrders,
-          cancelled: cancelledOrders,
+          placed: statusCounts.Placed || 0,
+          processing: statusCounts.Processing || 0,
+          shipped: statusCounts.Shipped || 0,
+          delivered: statusCounts.Delivered || 0,
+          cancelled: statusCounts.Cancelled || 0,
         },
         paymentCounts: {
-          pending: pendingPaymentOrders,
-          paid: paidPaymentOrders,
+          pending: paymentCounts.PENDING || 0,
+          paid: paymentCounts.PAID || 0,
         },
         totalProducts,
         lowStockProducts,
@@ -119,20 +115,27 @@ exports.getAllUsers = async (req, res, next) => {
         .select("-password")
         .sort({ createdAt: -1 })
         .skip(skip)
-        .limit(limitNum),
+        .limit(limitNum)
+        .lean(),
       User.countDocuments(query),
     ]);
 
-    // Attach order count to each user
-    const usersWithOrderCounts = await Promise.all(
-      users.map(async (u) => {
-        const orderCount = await Order.countDocuments({ user: u._id });
-        return {
-          ...u.toObject(),
-          orderCount,
-        };
-      })
+    // Attach order counts in a single aggregation instead of one query per user
+    const orderCounts = users.length
+      ? await Order.aggregate([
+          { $match: { user: { $in: users.map((u) => u._id) } } },
+          { $group: { _id: "$user", count: { $sum: 1 } } },
+        ])
+      : [];
+
+    const countByUser = new Map(
+      orderCounts.map((entry) => [String(entry._id), entry.count])
     );
+
+    const usersWithOrderCounts = users.map((u) => ({
+      ...u,
+      orderCount: countByUser.get(String(u._id)) || 0,
+    }));
 
     res.status(200).json({
       success: true,

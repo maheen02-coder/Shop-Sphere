@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const tvs = [
@@ -58,7 +59,7 @@ export default function SamsungTVs() {
           </h1>
 
           <p className="text-[#B8AEB6] mt-4">
-            Explore Samsung's premium television collection.
+            Explore Samsung&apos;s premium television collection.
           </p>
         </div>
 
@@ -72,10 +73,13 @@ export default function SamsungTVs() {
               <div className="bg-[#151116] border border-[#B89542]/30 rounded-2xl overflow-hidden hover:border-[#E8C96A] transition duration-300">
 
                 <div className="h-72 overflow-hidden">
-                  <img loading="lazy" decoding="async"
+                  <Image
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    width={1200}
+                    height={1200}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
 

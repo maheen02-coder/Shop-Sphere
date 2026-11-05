@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 import Link from "next/link";
 
@@ -46,10 +47,13 @@ export default function OrientPage() {
               className="group border border-[#B89542]/30 bg-[#151116] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(184,149,66,0.15)]"
             >
               <div className="relative h-[330px] overflow-hidden">
-                <img loading="lazy" decoding="async"
+                <Image
                   src={item.image}
                   alt={`Orient ${item.name}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={1200}
+                  height={1200}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#100D11] via-transparent to-transparent" />
                 <span className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.3em] text-[#E8C96A] border border-[#E8C96A]/50 bg-[#100D11]/75 px-3 py-2">

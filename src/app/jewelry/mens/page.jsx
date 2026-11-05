@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Link from "next/link";
 
 const categories = [
@@ -31,7 +33,7 @@ export default function MensJewelry() {
 
       <section className="mx-auto max-w-7xl pt-14 text-center">
         <p className="mb-4 text-xs uppercase tracking-[0.4em] text-[#E8C96A]">
-          ShopSphere • Men's Collection
+          ShopSphere • Men&apos;s Collection
         </p>
 
         <h1 className="text-4xl font-light tracking-wide sm:text-6xl">
@@ -51,10 +53,13 @@ export default function MensJewelry() {
             key={category.title}
             className="group relative min-h-[420px] flex-1 overflow-hidden rounded-sm border border-[#B89542]/30 bg-[#181319] sm:min-h-[520px]"
           >
-            <img loading="lazy" decoding="async"
+            <Image
               src={category.image}
               alt={category.title}
               className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              width={1200}
+              height={1200}
+              sizes="100vw"
             />
 
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
