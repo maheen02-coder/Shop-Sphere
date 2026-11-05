@@ -88,7 +88,7 @@ export default function StoveDetails() {
               0{product.id}
             </div>
             <div className="aspect-square p-8 sm:p-12">
-              <img
+              <img loading="lazy" decoding="async"
                 src={product.image}
                 alt={product.name}
                 className="h-full w-full object-contain"

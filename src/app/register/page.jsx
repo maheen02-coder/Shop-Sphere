@@ -35,8 +35,8 @@ function RegisterForm() {
     event.preventDefault();
     setError("");
 
-    if (form.password.length < 6) {
-      setError("Password must be at least 6 characters.");
+    if (form.password.length < 8) {
+      setError("Password must be at least 8 characters.");
       return;
     }
     if (form.password !== form.confirmPassword) {
@@ -89,6 +89,7 @@ function RegisterForm() {
             value={form[field]}
             onChange={update(field)}
             required={field !== "phone"}
+            minLength={field.includes("password") ? 8 : undefined}
             autoComplete={autoComplete}
             className="mt-2 w-full border border-[#B89542]/40 bg-[#100D11] px-4 py-3 text-sm outline-none focus:border-[#E8C96A]"
           />

@@ -149,7 +149,7 @@ export default function ShopProductPage() {
                     {product.label}
                   </span>
                 )}
-                <img
+                <img loading="lazy" decoding="async"
                   src={product.image}
                   alt={product.name}
                   className="h-[420px] w-full object-cover sm:h-[560px]"

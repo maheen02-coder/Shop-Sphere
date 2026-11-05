@@ -59,7 +59,7 @@ export default function CategoryCollection({
           </div>
           {image && (
             <div className="relative h-52 overflow-hidden border border-[#B89542]/20 bg-[#19141A] sm:h-64">
-              <img
+              <img loading="lazy" decoding="async"
                 src={image}
                 alt={title}
                 className="h-full w-full object-cover"

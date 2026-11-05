@@ -83,7 +83,7 @@ export default function KidsPage() {
           <div className="group relative w-full max-w-[520px] lg:w-[48%]">
             <div className="absolute -inset-3 border border-[#E8C96A]/20 transition duration-700 group-hover:inset-0" />
             <div className="relative h-[390px] overflow-hidden sm:h-[540px]">
-              <img
+              <img loading="lazy" decoding="async"
                 src="/kids.PNG"
                 alt="ShopSphere Kids Collection"
                 className="h-full w-full object-cover object-center transition duration-1000 group-hover:scale-105"

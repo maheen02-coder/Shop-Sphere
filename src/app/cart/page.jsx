@@ -60,7 +60,7 @@ export default function CartPage() {
                     className="grid grid-cols-1 gap-5 border-b border-[#B89542]/10 px-5 py-5 last:border-b-0 sm:grid-cols-[2fr_1fr_1fr_auto] sm:items-center"
                   >
                     <div className="flex items-center gap-4">
-                      <img
+                      <img loading="lazy" decoding="async"
                         src={item.image}
                         alt={item.name}
                         className="h-24 w-20 shrink-0 object-cover"

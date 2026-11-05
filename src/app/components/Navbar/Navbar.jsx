@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useCart } from "../../../context/CartContext";
 import { useAuth } from "../../../context/AuthContext";
+import LogoMark from "../LogoMark";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,12 +21,15 @@ const Navbar = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#B89542]/20 bg-[#100D11]/95 text-[#F1E8EB] backdrop-blur-xl">
       <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-5 sm:px-8 sm:py-6 lg:px-12">
-        <Link href="/" className="group flex shrink-0 flex-col">
-          <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-[#E8C96A] transition duration-300 group-hover:text-[#F5DFA0] sm:text-3xl">
-            VELVETY
-          </span>
-          <span className="mt-1 text-center text-[9px] tracking-[0.55em] text-[#D9B8C0]">
-            THORNS
+        <Link href="/" className="group flex shrink-0 items-center gap-2.5 sm:gap-3">
+          <LogoMark className="h-9 w-9 shrink-0 transition duration-300 group-hover:brightness-110 sm:h-10 sm:w-10" />
+          <span className="flex flex-col">
+            <span className="font-serif text-2xl font-semibold tracking-[0.18em] text-[#E8C96A] transition duration-300 group-hover:text-[#F5DFA0] sm:text-3xl">
+              VELVETY
+            </span>
+            <span className="mt-1 text-center text-[9px] tracking-[0.55em] text-[#D9B8C0]">
+              THORNS
+            </span>
           </span>
         </Link>
         <nav className="hidden items-center gap-8 lg:flex xl:gap-10">

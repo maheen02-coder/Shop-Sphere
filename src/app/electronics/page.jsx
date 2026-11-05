@@ -85,7 +85,7 @@ export default function ElectronicsPage() {
                   {company.number}
                 </div>
                 <div className="aspect-[4/5] overflow-hidden p-4 sm:p-6">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={company.image}
                     alt={company.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"

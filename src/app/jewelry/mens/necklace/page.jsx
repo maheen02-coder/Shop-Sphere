@@ -63,7 +63,7 @@ export default function MensNecklaces() {
               className="group border border-[#B89542]/30 bg-[#181319] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(232,201,106,0.1)] flex flex-col"
             >
               <div className="relative h-[340px] overflow-hidden bg-[#100D11]">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-105"

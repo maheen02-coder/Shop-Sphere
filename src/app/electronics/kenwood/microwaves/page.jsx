@@ -81,7 +81,7 @@ export default function KenwoodMicrowavesPage() {
                   0{product.id}
                 </div>
                 <div className="aspect-square overflow-hidden p-6 sm:p-8">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={product.image}
                     alt={product.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"

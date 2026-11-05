@@ -46,7 +46,7 @@ export default function OrientPage() {
               className="group border border-[#B89542]/30 bg-[#151116] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(184,149,66,0.15)]"
             >
               <div className="relative h-[330px] overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={`Orient ${item.name}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

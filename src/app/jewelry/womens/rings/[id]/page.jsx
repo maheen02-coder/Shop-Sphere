@@ -75,7 +75,7 @@ export default function RingDetails() {
 
         <div className="flex flex-col md:flex-row gap-12 items-start">
           <div className="w-full md:w-1/2 overflow-hidden rounded-2xl border border-[#B89542]/40">
-            <img
+            <img loading="lazy" decoding="async"
               src={ring.image}
               alt={ring.name}
               className="w-full h-[420px] md:h-[560px] object-cover"

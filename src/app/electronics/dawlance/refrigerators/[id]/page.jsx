@@ -96,7 +96,7 @@ export default async function ProductDetailsPage({ params }) {
           <div className="relative group">
             <div className="absolute -inset-3 border border-[#B89542]/20"></div>
             <div className="relative h-[500px] bg-[#151116] overflow-hidden">
-              <img
+              <img loading="lazy" decoding="async"
                 src={product.image}
                 alt={product.name}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

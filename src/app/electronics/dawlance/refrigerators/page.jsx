@@ -136,7 +136,7 @@ export default function RefrigeratorsPage() {
                 className="block"
               >
                 <div className="relative h-[300px] overflow-hidden bg-[#0d0a0e]">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={item.image}
                     alt={item.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

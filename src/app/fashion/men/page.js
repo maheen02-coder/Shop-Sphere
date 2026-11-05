@@ -101,7 +101,7 @@ export default function MenPage() {
                 className="group block min-w-0"
               >
                 <div className="relative overflow-hidden border border-white/5 bg-[#19151B]">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={product.image}
                     alt={product.name}
                     className="h-[230px] w-full object-cover object-center transition duration-700 group-hover:scale-105 sm:h-[300px] lg:h-[360px]"

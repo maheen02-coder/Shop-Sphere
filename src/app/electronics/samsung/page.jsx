@@ -58,7 +58,7 @@ export default function SamsungPage() {
               <div className="bg-[#151116] border border-[#B89542]/30 rounded-2xl overflow-hidden hover:border-[#E8C96A] transition duration-300">
 
                 <div className="h-80 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={category.image}
                     alt={category.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"

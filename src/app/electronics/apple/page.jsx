@@ -28,7 +28,7 @@ export default function Apple() {
             href="/electronics/apple/phones"
             className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src="/apple-phone1.jfif"
               alt="Apple Phones"
               className="w-full h-[260px] object-cover"
@@ -49,7 +49,7 @@ export default function Apple() {
             href="/electronics/apple/watches"
             className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src="/apple-watch-1.jfif"
               alt="Apple Watches"
               className="w-full h-[260px] object-cover"

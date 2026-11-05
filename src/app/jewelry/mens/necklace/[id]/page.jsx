@@ -89,7 +89,7 @@ export default function MensNecklaceDetail() {
         <div className="flex flex-col md:flex-row gap-12 items-center border border-[#B89542]/30 bg-[#171318] p-6 sm:p-10 rounded-2xl">
           <div className="w-full md:w-1/2">
             <div className="relative overflow-hidden rounded-xl border border-[#B89542]/20 bg-[#0F0B10]">
-              <img
+              <img loading="lazy" decoding="async"
                 src={necklace.image}
                 alt={necklace.name}
                 className="w-full h-[400px] sm:h-[500px] object-cover"

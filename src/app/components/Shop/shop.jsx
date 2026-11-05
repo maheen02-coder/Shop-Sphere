@@ -8,7 +8,7 @@ const Shop = () => {
       <div className="mx-auto max-w-6xl">
         <div className="relative flex flex-col items-center lg:min-h-[520px] lg:flex-row">
           <div className="group relative z-10 h-[280px] w-full cursor-pointer overflow-hidden rounded-xl transition-all duration-700 ease-in-out hover:z-30 sm:h-[360px] lg:h-[440px] lg:w-[55%]">
-            <img
+            <img loading="lazy" decoding="async"
               src="/image2.png"
               alt="Complete Shopping Collection"
               className="h-full w-full object-cover object-center transition-transform duration-700 ease-in-out group-hover:scale-[1.04]"

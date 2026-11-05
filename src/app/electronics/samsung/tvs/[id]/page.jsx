@@ -75,7 +75,7 @@ export default function SamsungTVDetails() {
         </div>
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="rounded-2xl overflow-hidden border border-[#B89542]/40 bg-[#151116]">
-            <img
+            <img loading="lazy" decoding="async"
               src={product.image}
               alt={product.name}
               className="w-full h-[500px] object-cover"

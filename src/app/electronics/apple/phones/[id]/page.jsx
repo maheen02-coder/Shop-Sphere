@@ -66,7 +66,7 @@ export default function ApplePhoneDetail() {
         <div className="flex flex-col md:flex-row gap-12 items-center border border-[#B89542] rounded-2xl p-8 bg-[#171318]">
 
           <div className="w-full md:w-1/2">
-            <img
+            <img loading="lazy" decoding="async"
               src={product.image}
               alt={product.name}
               className="w-full h-[450px] object-cover rounded-xl"

@@ -30,7 +30,7 @@ export default function DawlancePage() {
 
               <div className="relative h-[300px] overflow-hidden">
 
-                <img
+                <img loading="lazy" decoding="async"
                   src="/dawlance-fridgs.jpg"
                   alt="Dawlance Refrigerators"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

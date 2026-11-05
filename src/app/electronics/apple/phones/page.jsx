@@ -53,7 +53,7 @@ export default function ApplePhones() {
               href={`/electronics/apple/phones/${product.id}`}
               className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
             >
-              <img
+              <img loading="lazy" decoding="async"
                 src={product.image}
                 alt={product.name}
                 className="w-full h-[280px] object-cover"

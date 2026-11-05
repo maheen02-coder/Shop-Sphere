@@ -65,7 +65,7 @@ export default function WomensRings() {
               className="group w-full sm:w-[45%] lg:w-[22%] overflow-hidden rounded-2xl border border-[#B89542]/40 bg-[#171318] transition duration-300 hover:border-[#E8C96A]"
             >
               <div className="overflow-hidden">
-                <img
+                <img loading="lazy" decoding="async"
                   src={ring.image}
                   alt={ring.name}
                   className="w-full h-[280px] object-cover transition duration-700 group-hover:scale-105"

@@ -51,7 +51,7 @@ export default function FashionPage() {
               className="group w-full border border-[#B89542]/20 bg-[#19141A] p-3 transition-all duration-500 hover:-translate-y-2 hover:border-[#E8C96A]/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:w-[calc(50%-12px)] xl:w-[calc(33.333%-19px)]"
             >
               <div className="relative h-[340px] overflow-hidden bg-[#241D23] sm:h-[400px]">
-                <img
+                <img loading="lazy" decoding="async"
                   src={category.image}
                   alt={category.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"

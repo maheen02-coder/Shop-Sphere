@@ -587,7 +587,7 @@ export default function AdminPage() {
                       <tr key={product._id} className="border-b border-[#B89542]/10">
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
-                            <img
+                            <img loading="lazy" decoding="async"
                               src={product.image}
                               alt={product.name}
                               className="h-12 w-10 object-cover"

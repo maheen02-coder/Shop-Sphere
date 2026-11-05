@@ -57,7 +57,7 @@ export default function KenwoodPage() {
                   {collection.number}
                 </div>
                 <div className="aspect-[4/3] overflow-hidden p-6 sm:p-10">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={collection.image}
                     alt={collection.name}
                     className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"

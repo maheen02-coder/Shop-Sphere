@@ -71,7 +71,7 @@ export default function OrientRefrigeratorsPage() {
               className="group border border-[#B89542]/25 bg-[#151116] overflow-hidden transition-all duration-500 hover:border-[#E8C96A] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(184,149,66,0.10)]"
             >
               <div className="h-[300px] overflow-hidden bg-[#0D0A0E]">
-                <img
+                <img loading="lazy" decoding="async"
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -119,7 +119,7 @@ export default function OrientRefrigeratorsPage() {
                 ×
               </button>
 
-              <img
+              <img loading="lazy" decoding="async"
                 src={selectedImage.image}
                 alt={selectedImage.name}
                 className="w-full h-72 object-cover"

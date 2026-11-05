@@ -87,7 +87,7 @@ export default function MensRings() {
               className="group w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
             >
               <div className="relative h-[320px] overflow-hidden border border-[#B89542]/20 bg-[#181319] sm:h-[350px]">
-                <img
+                <img loading="lazy" decoding="async"
                   src={ring.image}
                   alt={ring.name}
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"

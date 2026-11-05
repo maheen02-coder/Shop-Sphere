@@ -49,7 +49,7 @@ export default function JewelryPage() {
             key={category.title}
             className="group relative min-h-[430px] flex-1 overflow-hidden border border-[#B89542]/30 bg-[#181319] sm:min-h-[540px]"
           >
-            <img
+            <img loading="lazy" decoding="async"
               src={category.image}
               alt={category.title}
               className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"

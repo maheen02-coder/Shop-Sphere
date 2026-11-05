@@ -60,7 +60,7 @@ export default function SamsungPhones() {
               <div className="bg-[#151116] border border-[#B89542]/30 rounded-2xl overflow-hidden hover:border-[#E8C96A] transition duration-300">
 
                 <div className="h-96 overflow-hidden">
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={product.image}
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"

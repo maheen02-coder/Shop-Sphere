@@ -68,7 +68,7 @@ export default function CollectionsPage() {
                 }`}
               >
                 <div className={`relative ${index === 0 ? "h-72 sm:h-80" : "h-72"}`}>
-                  <img
+                  <img loading="lazy" decoding="async"
                     src={collection.image}
                     alt={collection.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
