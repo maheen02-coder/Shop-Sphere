@@ -156,10 +156,10 @@ export default function ShopPage() {
 
           {error && (
             <div className="mt-8 border border-[#E2A0A0]/40 bg-[#2A181C] px-5 py-4 text-sm text-[#F2C4C4]">
-              {error}. Make sure the ShopSphere API is running on port 5000.
+              {error}.{" "}
               <button
                 onClick={loadProducts}
-                className="ml-3 underline underline-offset-4 hover:text-white"
+                className="underline underline-offset-4 hover:text-white"
               >
                 Retry
               </button>

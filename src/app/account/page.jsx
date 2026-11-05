@@ -283,6 +283,9 @@ export default function AccountPage() {
                           <img
                             src={item.image}
                             alt={item.name}
+                            loading="lazy"
+                            width={56}
+                            height={64}
                             className="h-16 w-14 object-cover"
                           />
                           <div className="min-w-0 flex-1">
