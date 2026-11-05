@@ -5,13 +5,13 @@ const phones = [
   {
     id: "1",
     name: "Samsung Galaxy Smartphone",
-    image: "/samsung-phone-1.jfif",
+    image: "/samsung-phone-1.jpg",
     price: "Rs. 149,999",
   },
   {
     id: "2",
     name: "Samsung Galaxy Premium Smartphone",
-    image: "/samsung-phone-2.jfif",
+    image: "/samsung-phone-2.jpg",
     price: "Rs. 199,999",
   },
 ];

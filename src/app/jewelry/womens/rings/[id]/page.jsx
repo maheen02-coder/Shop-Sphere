@@ -12,7 +12,7 @@ const rings = [
     id: "101",
     name: "Golden Elegance Ring",
     price: 4500,
-    image: "/women-ring2.jfif",
+    image: "/women-ring2.jpg",
     type: "Gold Collection",
     description:
       "A timeless ring design with elegant details, perfect for everyday styling and special occasions.",
@@ -21,7 +21,7 @@ const rings = [
     id: "102",
     name: "Classic Gold Ring",
     price: 5200,
-    image: "/women-ring2.jfif",
+    image: "/women-ring2.jpg",
     type: "Timeless Collection",
     description:
       "A classic-inspired ring created for a refined and sophisticated look.",
@@ -30,7 +30,7 @@ const rings = [
     id: "103",
     name: "Elegant Statement Ring",
     price: 6000,
-    image: "/women-ring2.jfif",
+    image: "/women-ring2.jpg",
     type: "Signature Collection",
     description:
       "A statement design that adds a distinctive touch to your jewelry collection.",
@@ -39,7 +39,7 @@ const rings = [
     id: "104",
     name: "Luxury Minimal Ring",
     price: 3800,
-    image: "/women-ring2.jfif",
+    image: "/women-ring2.jpg",
     type: "Everyday Elegance",
     description:
       "A minimal and versatile design for effortless elegance throughout the day.",

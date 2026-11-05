@@ -6,14 +6,14 @@ const collections = [
   {
     name: "Microwaves",
     description: "Modern microwaves for quick and convenient cooking.",
-    image: "/kenwood-microwave-1.jfif",
+    image: "/kenwood-microwave-1.jpg",
     slug: "microwaves",
     number: "01",
   },
   {
     name: "Stoves",
     description: "Reliable Kenwood stoves designed for everyday cooking.",
-    image: "/kenwood-stoove-1.jfif",
+    image: "/kenwood-stoove-1.jpg",
     slug: "stoves",
     number: "02",
   },

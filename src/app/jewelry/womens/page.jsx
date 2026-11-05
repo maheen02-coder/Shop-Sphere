@@ -33,7 +33,7 @@ export default function WomensJewelry() {
             className="group relative w-full md:w-[46%] overflow-hidden rounded-2xl border border-[#B89542]/50 bg-[#171318]"
           >
             <Image
-              src="/women-ring2.jfif"
+              src="/women-ring2.jpg"
               alt="Women's Rings"
               className="w-full h-[400px] object-cover transition duration-700 group-hover:scale-105"
               width={1200}
@@ -67,7 +67,7 @@ export default function WomensJewelry() {
             className="group relative w-full md:w-[46%] overflow-hidden rounded-2xl border border-[#B89542]/50 bg-[#171318]"
           >
             <Image
-              src="/women-necklace2.jfif"
+              src="/women-necklace2.jpg"
               alt="Women's Necklaces"
               className="w-full h-[400px] object-cover transition duration-700 group-hover:scale-105"
               width={1200}

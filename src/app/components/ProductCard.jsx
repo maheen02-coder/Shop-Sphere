@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { memo, useEffect, useRef, useState } from "react";
 import { useCartActions } from "../../context/CartContext";
-import { formatPrice } from "../../lib/format";
+import { formatPrice, imageSrc } from "../../lib/format";
 
 function ProductCard({ product }) {
   const { addItem } = useCartActions();
@@ -40,7 +40,7 @@ function ProductCard({ product }) {
       <Link href={`/shop/${product._id}`} className="flex h-full flex-col">
         <div className="relative h-64 overflow-hidden bg-[#241D23]">
           <Image
-            src={product.image}
+            src={imageSrc(product.image)}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"

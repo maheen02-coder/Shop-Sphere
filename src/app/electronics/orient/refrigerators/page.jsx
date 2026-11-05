@@ -9,25 +9,25 @@ const products = [
     id: 1,
     name: "Orient Refrigerator 1",
     price: "Rs. 129,999",
-    image: "/orient-fridge-1.jfif",
+    image: "/orient-fridge-1.jpg",
   },
   {
     id: 2,
     name: "Orient Refrigerator 2",
     price: "Rs. 139,999",
-    image: "/orient-fridge-2.jfif",
+    image: "/orient-fridge-2.jpg",
   },
   {
     id: 3,
     name: "Orient Refrigerator 3",
     price: "Rs. 149,999",
-    image: "/orient-fridge-3.jfif",
+    image: "/orient-fridge-3.jpg",
   },
   {
     id: 4,
     name: "Orient Refrigerator 4",
     price: "Rs. 159,999",
-    image: "/orient-fridge-4.jfif",
+    image: "/orient-fridge-4.jpg",
   },
 ];
 

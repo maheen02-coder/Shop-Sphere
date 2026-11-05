@@ -6,31 +6,31 @@ const microwaves = [
   {
     id: 1,
     name: "Kenwood Microwave 01",
-    image: "/kenwood-microwave-1.jfif",
+    image: "/kenwood-microwave-1.jpg",
     price: "Rs. 24,999",
   },
   {
     id: 2,
     name: "Kenwood Microwave 02",
-    image: "/kenwood-microwave-2.jfif",
+    image: "/kenwood-microwave-2.jpg",
     price: "Rs. 27,999",
   },
   {
     id: 3,
     name: "Kenwood Microwave 03",
-    image: "/kenwood-microwave-3.jfif",
+    image: "/kenwood-microwave-3.jpg",
     price: "Rs. 29,999",
   },
   {
     id: 4,
     name: "Kenwood Microwave 04",
-    image: "/kenwood-microwave-4.jfif",
+    image: "/kenwood-microwave-4.jpg",
     price: "Rs. 32,999",
   },
   {
     id: 5,
     name: "Kenwood Microwave 05",
-    image: "/kenwood-microwave-5.jfif",
+    image: "/kenwood-microwave-5.jpg",
     price: "Rs. 34,999",
   },
 ];

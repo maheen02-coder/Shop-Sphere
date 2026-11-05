@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar/Navbar";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 import { apiFetch } from "../../lib/api";
-import { formatPrice } from "../../lib/format";
+import { formatPrice, imageSrc } from "../../lib/format";
 
 const emptyAddress = {
   fullName: "",
@@ -306,7 +306,7 @@ export default function CheckoutPage() {
                     className="flex items-center gap-3"
                   >
                     <Image
-                      src={item.image}
+                      src={imageSrc(item.image)}
                       alt={item.name}
                       width={56}
                       height={64}

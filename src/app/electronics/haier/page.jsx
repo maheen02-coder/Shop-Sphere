@@ -29,7 +29,7 @@ export default function HaierPage() {
             <div className="border border-[#B89542]/40 rounded-2xl overflow-hidden bg-[#151116] hover:border-[#E8C96A] transition duration-300">
               <div className="h-80 overflow-hidden">
                 <Image
-                  src="/haier-washing-machine-1.jfif"
+                  src="/haier-washing-machine-1.jpg"
                   alt="Haier Washing Machines"
                   className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   width={1200}

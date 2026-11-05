@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { apiFetch } from "../../../lib/api";
-import { formatPrice } from "../../../lib/format";
+import { formatPrice, imageSrc } from "../../../lib/format";
 import LogoMark from "../LogoMark";
 
 const CATEGORY_RULES = [
@@ -370,7 +370,7 @@ export default function Assistant() {
                           className="flex gap-3 border border-[#B89542]/25 bg-[#100D11] p-2 transition hover:border-[#E8C96A]/60"
                         >
                           <Image
-                            src={product.image}
+                            src={imageSrc(product.image)}
                             alt={product.name}
                             width={56}
                             height={56}

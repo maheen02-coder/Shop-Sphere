@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "../components/Navbar/Navbar";
 import { useCart } from "../../context/CartContext";
-import { formatPrice } from "../../lib/format";
+import { formatPrice, imageSrc } from "../../lib/format";
 
 export default function CartPage() {
   const {
@@ -62,7 +62,7 @@ export default function CartPage() {
                   >
                     <div className="flex items-center gap-4">
                       <Image
-                        src={item.image}
+                        src={imageSrc(item.image)}
                         alt={item.name}
                         width={80}
                         height={96}

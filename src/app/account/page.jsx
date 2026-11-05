@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar/Navbar";
 import { useAuth } from "../../context/AuthContext";
 import { apiFetch } from "../../lib/api";
-import { formatDate, formatPrice } from "../../lib/format";
+import { formatDate, formatPrice, imageSrc } from "../../lib/format";
 
 const STATUS_STYLES = {
   Placed: "text-[#E8C96A] border-[#E8C96A]/40",
@@ -282,7 +282,7 @@ export default function AccountPage() {
                           className="flex items-center gap-4 py-4"
                         >
                           <Image
-                            src={item.image}
+                            src={imageSrc(item.image)}
                             alt={item.name}
                             width={56}
                             height={64}

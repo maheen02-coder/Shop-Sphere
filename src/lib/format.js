@@ -9,6 +9,11 @@ export const parsePrice = (value) => {
   return Math.round(numeric);
 };
 
+// Catalogue records may still store legacy .jfif paths. Vercel's image
+// optimizer rejects that extension, so render the matching .jpg file.
+export const imageSrc = (src) =>
+  typeof src === "string" ? src.replace(/\.jfif(?=$|[?#])/i, ".jpg") : src;
+
 export const formatDate = (value) => {
   if (!value) return "";
   const date = new Date(value);

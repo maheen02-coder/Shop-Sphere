@@ -6,31 +6,31 @@ const stoves = [
   {
     id: 1,
     name: "Kenwood Stove 01",
-    image: "/kenwood-stoove-1.jfif",
+    image: "/kenwood-stoove-1.jpg",
     price: "Rs. 39,999",
   },
   {
     id: 2,
     name: "Kenwood Stove 02",
-    image: "/kenwood-stoove-2.jfif",
+    image: "/kenwood-stoove-2.jpg",
     price: "Rs. 44,999",
   },
   {
     id: 3,
     name: "Kenwood Stove 03",
-    image: "/kenwood-stoove-3.jfif",
+    image: "/kenwood-stoove-3.jpg",
     price: "Rs. 49,999",
   },
   {
     id: 4,
     name: "Kenwood Stove 04",
-    image: "/kenwood-stoove-4.jfif",
+    image: "/kenwood-stoove-4.jpg",
     price: "Rs. 54,999",
   },
   {
     id: 5,
     name: "Kenwood Stove 05",
-    image: "/kenwood-stoove-5.jfif",
+    image: "/kenwood-stoove-5.jpg",
     price: "Rs. 59,999",
   },
 ];

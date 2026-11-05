@@ -5,25 +5,25 @@ const tvs = [
   {
     id: "1",
     name: "Samsung Crystal UHD 4K Smart TV",
-    image: "/samsung-tv-1.jfif",
+    image: "/samsung-tv-1.jpg",
     price: "Rs. 129,999",
   },
   {
     id: "2",
     name: "Samsung QLED 4K Smart TV",
-    image: "/samsung-tv-2.jfif",
+    image: "/samsung-tv-2.jpg",
     price: "Rs. 189,999",
   },
   {
     id: "3",
     name: "Samsung Neo QLED Smart TV",
-    image: "/samsung-tv-3.jfif",
+    image: "/samsung-tv-3.jpg",
     price: "Rs. 249,999",
   },
   {
     id: "4",
     name: "Samsung Premium 4K Smart TV",
-    image: "/samsung-tv-4.jfif",
+    image: "/samsung-tv-4.jpg",
     price: "Rs. 299,999",
   },
 ];

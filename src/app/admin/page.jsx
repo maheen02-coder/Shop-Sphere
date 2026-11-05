@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar/Navbar";
 import { useAuth } from "../../context/AuthContext";
 import { apiFetch } from "../../lib/api";
-import { formatDate, formatPrice } from "../../lib/format";
+import { formatDate, formatPrice, imageSrc } from "../../lib/format";
 
 const ORDER_STATUSES = ["Placed", "Processing", "Shipped", "Delivered", "Cancelled"];
 const PAYMENT_STATUSES = ["PENDING", "PAID", "FAILED"];
@@ -19,7 +19,7 @@ const emptyProduct = {
   brand: "ShopSphere",
   price: "",
   stock: "20",
-  image: "/fashion.jfif",
+  image: "/fashion.jpg",
   description: "",
 };
 
@@ -589,7 +589,7 @@ export default function AdminPage() {
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-3">
                             <Image
-                              src={product.image}
+                              src={imageSrc(product.image)}
                               alt={product.name}
                               width={40}
                               height={48}

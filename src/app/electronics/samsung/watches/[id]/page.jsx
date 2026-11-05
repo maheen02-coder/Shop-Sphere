@@ -10,7 +10,7 @@ const watches = [
   {
     id: "1",
     name: "Samsung Galaxy Watch",
-    image: "/samsung-watch-1.jfif",
+    image: "/samsung-watch-1.jpg",
     price: "Rs. 79,999",
     description:
       "A Samsung Galaxy smartwatch designed to combine everyday connectivity, fitness features, and modern style.",
@@ -18,7 +18,7 @@ const watches = [
   {
     id: "2",
     name: "Samsung Galaxy Watch Premium",
-    image: "/samsung-watch-2.jfif",
+    image: "/samsung-watch-2.jpg",
     price: "Rs. 99,999",
     description:
       "A premium Samsung Galaxy smartwatch offering a modern wearable experience with advanced everyday features.",

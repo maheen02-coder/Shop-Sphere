@@ -5,19 +5,19 @@ export default function SamsungPage() {
   const categories = [
     {
       name: "TVs",
-      image: "/samsung-tv-1.jfif",
+      image: "/samsung-tv-1.jpg",
       link: "/electronics/samsung/tvs",
       description: "Explore Samsung's premium television collection.",
     },
     {
       name: "Phones",
-      image: "/samsung-phone-1.jfif",
+      image: "/samsung-phone-1.jpg",
       link: "/electronics/samsung/phones",
       description: "Discover Samsung smartphones built for everyday life.",
     },
     {
       name: "Watches",
-      image: "/samsung-watch-1.jfif",
+      image: "/samsung-watch-1.jpg",
       link: "/electronics/samsung/watches",
       description: "Explore Samsung smartwatches and wearable technology.",
     },

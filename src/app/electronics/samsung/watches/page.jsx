@@ -5,13 +5,13 @@ const watches = [
   {
     id: "1",
     name: "Samsung Galaxy Watch",
-    image: "/samsung-watch-1.jfif",
+    image: "/samsung-watch-1.jpg",
     price: "Rs. 79,999",
   },
   {
     id: "2",
     name: "Samsung Galaxy Watch Premium",
-    image: "/samsung-watch-2.jfif",
+    image: "/samsung-watch-2.jpg",
     price: "Rs. 99,999",
   },
 ];

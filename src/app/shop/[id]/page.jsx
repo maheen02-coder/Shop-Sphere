@@ -8,7 +8,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useCart } from "../../../context/CartContext";
 import { useAuth } from "../../../context/AuthContext";
 import { apiFetch } from "../../../lib/api";
-import { formatPrice } from "../../../lib/format";
+import { formatPrice, imageSrc } from "../../../lib/format";
 
 export default function ShopProductPage() {
   const { id } = useParams();
@@ -159,7 +159,7 @@ export default function ShopProductPage() {
                   </span>
                 )}
                 <Image
-                  src={product.image}
+                  src={imageSrc(product.image)}
                   alt={product.name}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

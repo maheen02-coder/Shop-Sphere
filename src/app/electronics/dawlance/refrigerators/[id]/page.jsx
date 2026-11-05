@@ -8,7 +8,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 1",
     price: "Rs. 129,999",
     category: "Double Door",
-    image: "/dawlence-fridge-1.jfif",
+    image: "/dawlence-fridge-1.jpg",
     description:
       "A premium Dawlance refrigerator designed for modern homes with efficient cooling, spacious storage and an elegant appearance.",
   },
@@ -17,7 +17,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 2",
     price: "Rs. 139,999",
     category: "Double Door",
-    image: "/dawlence-fridge-2.jfif",
+    image: "/dawlence-fridge-2.jpg",
     description:
       "A stylish Dawlance refrigerator offering reliable cooling and practical storage for everyday use.",
   },
@@ -26,7 +26,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 3",
     price: "Rs. 149,999",
     category: "Top Mount",
-    image: "/dawlence-fridge-3.jfif",
+    image: "/dawlence-fridge-3.jpg",
     description:
       "A modern top-mount refrigerator combining spacious storage with efficient cooling.",
   },
@@ -35,7 +35,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 4",
     price: "Rs. 159,999",
     category: "Top Mount",
-    image: "/dawlence-fridge-4.jfif",
+    image: "/dawlence-fridge-4.jpg",
     description:
       "A refined Dawlance refrigerator built for convenient storage and everyday performance.",
   },
@@ -44,7 +44,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 5",
     price: "Rs. 169,999",
     category: "Side by Side",
-    image: "/dawlence-fridge-5.jfif",
+    image: "/dawlence-fridge-5.jpg",
     description:
       "A spacious side-by-side refrigerator with a premium appearance and generous storage.",
   },
@@ -53,7 +53,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 6",
     price: "Rs. 179,999",
     category: "Side by Side",
-    image: "/dawlence-fridge-6.jfif",
+    image: "/dawlence-fridge-6.jpg",
     description:
       "A premium refrigerator designed to provide convenient organization and dependable cooling.",
   },
@@ -62,7 +62,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 7",
     price: "Rs. 189,999",
     category: "French Door",
-    image: "/dawlence-fridge-7.jfif",
+    image: "/dawlence-fridge-7.jpg",
     description:
       "An elegant French-door refrigerator offering spacious and sophisticated storage.",
   },
@@ -71,7 +71,7 @@ const refrigerators = [
     name: "Dawlance Refrigerator 8",
     price: "Rs. 199,999",
     category: "French Door",
-    image: "/dawlence-fridge-8.jfif",
+    image: "/dawlence-fridge-8.jpg",
     description:
       "A premium French-door refrigerator combining modern styling with practical functionality.",
   },

@@ -8,7 +8,7 @@ const tvs = [
   {
     id: "1",
     name: "Samsung Crystal UHD 4K Smart TV",
-    image: "/samsung-tv-1.jfif",
+    image: "/samsung-tv-1.jpg",
     price: "Rs. 129,999",
     description:
       "A Samsung 4K Smart TV designed to deliver sharp visuals and an immersive entertainment experience.",
@@ -16,7 +16,7 @@ const tvs = [
   {
     id: "2",
     name: "Samsung QLED 4K Smart TV",
-    image: "/samsung-tv-2.jfif",
+    image: "/samsung-tv-2.jpg",
     price: "Rs. 189,999",
     description:
       "A premium Samsung QLED television offering vibrant colors and a modern viewing experience.",
@@ -24,7 +24,7 @@ const tvs = [
   {
     id: "3",
     name: "Samsung Neo QLED Smart TV",
-    image: "/samsung-tv-3.jfif",
+    image: "/samsung-tv-3.jpg",
     price: "Rs. 249,999",
     description:
       "A premium Neo QLED TV designed for detailed picture quality and immersive entertainment.",
@@ -32,7 +32,7 @@ const tvs = [
   {
     id: "4",
     name: "Samsung Premium 4K Smart TV",
-    image: "/samsung-tv-4.jfif",
+    image: "/samsung-tv-4.jpg",
     price: "Rs. 299,999",
     description:
       "A high-end Samsung 4K Smart TV combining premium design with an advanced viewing experience.",

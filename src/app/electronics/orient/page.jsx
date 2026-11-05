@@ -6,13 +6,13 @@ const categories = [
   {
     name: "Refrigerators",
     description: "Modern cooling solutions for your home.",
-    image: "/orient-fridge-1.jfif",
+    image: "/orient-fridge-1.jpg",
     href: "/electronics/orient/refrigerators",
   },
   {
     name: "Air Conditioners",
     description: "Comfort and climate control in every season.",
-    image: "/orient-ac-1.jfif",
+    image: "/orient-ac-1.jpg",
     href: "/electronics/orient/air-conditioners",
   },
 ];

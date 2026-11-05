@@ -16,7 +16,7 @@ export default function FragrancesPage() {
         title="Signature"
         accent="Fragrances"
         description="Captivating scents with distinctive character — from bright everyday citrus to deep oud for evening wear."
-        image="/perfume.jfif"
+        image="/perfume.jpg"
       />
     </>
   );

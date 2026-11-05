@@ -8,7 +8,7 @@ const microwaves = [
   {
     id: "1",
     name: "Kenwood Microwave 01",
-    image: "/kenwood-microwave-1.jfif",
+    image: "/kenwood-microwave-1.jpg",
     price: "Rs. 24,999",
     description:
       "A practical Kenwood microwave designed for convenient everyday cooking and reheating.",
@@ -16,7 +16,7 @@ const microwaves = [
   {
     id: "2",
     name: "Kenwood Microwave 02",
-    image: "/kenwood-microwave-2.jfif",
+    image: "/kenwood-microwave-2.jpg",
     price: "Rs. 27,999",
     description:
       "A modern Kenwood microwave offering reliable performance for everyday kitchen needs.",
@@ -24,7 +24,7 @@ const microwaves = [
   {
     id: "3",
     name: "Kenwood Microwave 03",
-    image: "/kenwood-microwave-3.jfif",
+    image: "/kenwood-microwave-3.jpg",
     price: "Rs. 29,999",
     description:
       "A stylish Kenwood microwave built for simple, efficient and convenient cooking.",
@@ -32,7 +32,7 @@ const microwaves = [
   {
     id: "4",
     name: "Kenwood Microwave 04",
-    image: "/kenwood-microwave-4.jfif",
+    image: "/kenwood-microwave-4.jpg",
     price: "Rs. 32,999",
     description:
       "A versatile Kenwood microwave designed to fit comfortably into a modern kitchen.",
@@ -40,7 +40,7 @@ const microwaves = [
   {
     id: "5",
     name: "Kenwood Microwave 05",
-    image: "/kenwood-microwave-5.jfif",
+    image: "/kenwood-microwave-5.jpg",
     price: "Rs. 34,999",
     description:
       "A premium Kenwood microwave combining practical functionality with a modern design.",

@@ -5,14 +5,14 @@ const categories = [
   {
     title: "Women's Jewelry",
     subtitle: "Elegance in Every Detail",
-    image: "/women-category-jewellry-pic.jfif",
+    image: "/women-category-jewellry-pic.jpg",
     href: "/jewelry/womens",
     number: "01",
   },
   {
     title: "Men's Jewelry",
     subtitle: "A Statement of Character",
-    image: "/men-category-jewellry-pic.jfif",
+    image: "/men-category-jewellry-pic.jpg",
     href: "/jewelry/mens",
     number: "02",
   },

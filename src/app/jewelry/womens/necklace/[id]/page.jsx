@@ -12,7 +12,7 @@ const necklaces = [
     id: "201",
     name: "Golden Grace Necklace",
     price: 4800,
-    image: "/women-necklace2.jfif",
+    image: "/women-necklace2.jpg",
     collection: "Golden Collection",
     description:
       "A graceful necklace with timeless elegance, perfect for special occasions and everyday styling.",
@@ -21,7 +21,7 @@ const necklaces = [
     id: "202",
     name: "Elegant Pearl Necklace",
     price: 5500,
-    image: "/women-necklace2.jfif",
+    image: "/women-necklace2.jpg",
     collection: "Classic Collection",
     description:
       "A classic-inspired necklace designed to add a refined touch to your look.",
@@ -30,7 +30,7 @@ const necklaces = [
     id: "203",
     name: "Royal Statement Necklace",
     price: 6200,
-    image: "/women-necklace2.jfif",
+    image: "/women-necklace2.jpg",
     collection: "Signature Collection",
     description:
       "A statement necklace with distinctive style for memorable occasions.",
@@ -39,7 +39,7 @@ const necklaces = [
     id: "204",
     name: "Minimal Charm Necklace",
     price: 3900,
-    image: "/women-necklace2.jfif",
+    image: "/women-necklace2.jpg",
     collection: "Everyday Elegance",
     description:
       "A minimal necklace for effortless and versatile styling.",

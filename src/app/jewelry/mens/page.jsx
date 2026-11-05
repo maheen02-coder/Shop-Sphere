@@ -8,14 +8,14 @@ const categories = [
   {
     title: "Men's Rings",
     subtitle: "Bold designs. Timeless character.",
-    image: "/men-ring2.jfif",
+    image: "/men-ring2.jpg",
     href: "/jewelry/mens/rings",
     number: "01",
   },
   {
     title: "Men's Necklaces",
     subtitle: "Refined pieces for a distinctive look.",
-    image: "/men-necklace2.jfif",
+    image: "/men-necklace2.jpg",
     href: "/jewelry/mens/necklace",
     number: "02",
   },

@@ -9,25 +9,25 @@ const products = [
     id: 1,
     name: "Orient Air Conditioner 1",
     price: "Rs. 149,999",
-    image: "/orient-ac-1.jfif",
+    image: "/orient-ac-1.jpg",
   },
   {
     id: 2,
     name: "Orient Air Conditioner 2",
     price: "Rs. 159,999",
-    image: "/orient-ac-2.jfif",
+    image: "/orient-ac-2.jpg",
   },
   {
     id: 3,
     name: "Orient Air Conditioner 3",
     price: "Rs. 169,999",
-    image: "/orient-ac-3.jfif",
+    image: "/orient-ac-3.jpg",
   },
   {
     id: 4,
     name: "Orient Air Conditioner 4",
     price: "Rs. 179,999",
-    image: "/orient-ac-4.jfif",
+    image: "/orient-ac-4.jpg",
   },
 ];
 

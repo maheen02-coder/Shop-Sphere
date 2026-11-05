@@ -30,7 +30,7 @@ export default function Apple() {
             className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
           >
             <Image
-              src="/apple-phone1.jfif"
+              src="/apple-phone1.jpg"
               alt="Apple Phones"
               className="w-full h-[260px] object-cover"
               width={1200}
@@ -54,7 +54,7 @@ export default function Apple() {
             className="w-[320px] border border-[#B89542] rounded-2xl overflow-hidden bg-[#171318] hover:-translate-y-2 transition duration-300"
           >
             <Image
-              src="/apple-watch-1.jfif"
+              src="/apple-watch-1.jpg"
               alt="Apple Watches"
               className="w-full h-[260px] object-cover"
               width={1200}

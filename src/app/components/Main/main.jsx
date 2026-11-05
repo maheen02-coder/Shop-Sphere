@@ -5,7 +5,7 @@ const categories = [
   {
     title: "Fashion",
     description: "Discover timeless styles.",
-    image: "/fashion.jfif",
+    image: "/fashion.jpg",
     number: "01",
     label: "STYLE & APPAREL",
     slug: "fashion",
@@ -14,7 +14,7 @@ const categories = [
     title: "Electronics",
     description:
       "Explore modern technology, trusted devices and everyday essentials.",
-    image: "/electronics.jfif",
+    image: "/electronics.jpg",
     number: "02",
     label: "TECH & INNOVATION",
     slug: "electronics",
@@ -23,7 +23,7 @@ const categories = [
     title: "Fine Jewellery",
     description:
       "Elegant gold-toned details and statement jewellery for memorable moments.",
-    image: "/jewelry.jfif",
+    image: "/jewelry.jpg",
     number: "03",
     label: "TIMELESS ELEGANCE",
     slug: "jewellery",
@@ -32,7 +32,7 @@ const categories = [
     title: "Signature Fragrances",
     description:
       "Find captivating scents with distinctive character for every occasion.",
-    image: "/perfume.jfif",
+    image: "/perfume.jpg",
     number: "04",
     label: "SCENT COLLECTION",
     slug: "fragrances",

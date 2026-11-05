@@ -8,7 +8,7 @@ const washingMachines = [
   {
     id: "1",
     name: "Haier Automatic Washing Machine",
-    image: "/haier-washing-machine-1.jfif",
+    image: "/haier-washing-machine-1.jpg",
     price: "Rs. 64,999",
     description:
       "A reliable Haier washing machine designed for convenient everyday laundry.",
@@ -16,7 +16,7 @@ const washingMachines = [
   {
     id: "2",
     name: "Haier Fully Automatic Washer",
-    image: "/haier-washing-machine-2.jfif",
+    image: "/haier-washing-machine-2.jpg",
     price: "Rs. 69,999",
     description:
       "A practical fully automatic washing machine designed for modern homes.",
@@ -24,7 +24,7 @@ const washingMachines = [
   {
     id: "3",
     name: "Haier Smart Washing Machine",
-    image: "/haier-washing-machine-3.jfif",
+    image: "/haier-washing-machine-3.jpg",
     price: "Rs. 74,999",
     description:
       "A modern Haier washing machine offering convenient washing performance.",
@@ -32,7 +32,7 @@ const washingMachines = [
   {
     id: "4",
     name: "Haier Premium Washing Machine",
-    image: "/haier-washing-machine-4.jfif",
+    image: "/haier-washing-machine-4.jpg",
     price: "Rs. 79,999",
     description:
       "A premium washing machine built for efficient and comfortable everyday use.",
@@ -40,7 +40,7 @@ const washingMachines = [
   {
     id: "5",
     name: "Haier Front Load Washing Machine",
-    image: "/haier-washing-machine-5.jfif",
+    image: "/haier-washing-machine-5.jpg",
     price: "Rs. 89,999",
     description:
       "A stylish front-load washing machine designed for efficient laundry care.",
@@ -48,7 +48,7 @@ const washingMachines = [
   {
     id: "6",
     name: "Haier Advanced Washing Machine",
-    image: "/haier-washing-machine-6.jfif",
+    image: "/haier-washing-machine-6.jpg",
     price: "Rs. 94,999",
     description:
       "An advanced Haier washing machine designed for a modern laundry experience.",

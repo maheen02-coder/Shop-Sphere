@@ -4,37 +4,37 @@ const washingMachines = [
   {
     id: "1",
     name: "Haier Automatic Washing Machine",
-    image: "/haier-washing-machine-1.jfif",
+    image: "/haier-washing-machine-1.jpg",
     price: "Rs. 64,999",
   },
   {
     id: "2",
     name: "Haier Fully Automatic Washer",
-    image: "/haier-washing-machine-2.jfif",
+    image: "/haier-washing-machine-2.jpg",
     price: "Rs. 69,999",
   },
   {
     id: "3",
     name: "Haier Smart Washing Machine",
-    image: "/haier-washing-machine-3.jfif",
+    image: "/haier-washing-machine-3.jpg",
     price: "Rs. 74,999",
   },
   {
     id: "4",
     name: "Haier Premium Washing Machine",
-    image: "/haier-washing-machine-4.jfif",
+    image: "/haier-washing-machine-4.jpg",
     price: "Rs. 79,999",
   },
   {
     id: "5",
     name: "Haier Front Load Washing Machine",
-    image: "/haier-washing-machine-5.jfif",
+    image: "/haier-washing-machine-5.jpg",
     price: "Rs. 89,999",
   },
   {
     id: "6",
     name: "Haier Advanced Washing Machine",
-    image: "/haier-washing-machine-6.jfif",
+    image: "/haier-washing-machine-6.jpg",
     price: "Rs. 94,999",
   },
 ];

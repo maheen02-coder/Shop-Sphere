@@ -20,7 +20,7 @@ const companies = [
   {
     name: "Kenwood",
     description: "Microwaves & Stoves",
-    image: "/kenwood-logo.jfif",
+    image: "/kenwood-logo.jpg",
     slug: "kenwood",
     number: "03",
   },

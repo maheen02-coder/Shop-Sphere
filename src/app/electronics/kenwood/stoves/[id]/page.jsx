@@ -8,7 +8,7 @@ const stoves = [
   {
     id: "1",
     name: "Kenwood Stove 01",
-    image: "/kenwood-stoove-1.jfif",
+    image: "/kenwood-stoove-1.jpg",
     price: "Rs. 39,999",
     description:
       "Explore this Kenwood stove for your kitchen. A practical choice for everyday cooking and modern living.",
@@ -16,7 +16,7 @@ const stoves = [
   {
     id: "2",
     name: "Kenwood Stove 02",
-    image: "/kenwood-stoove-2.jfif",
+    image: "/kenwood-stoove-2.jpg",
     price: "Rs. 44,999",
     description:
       "Discover another Kenwood stove design for your kitchen and everyday cooking needs.",
@@ -24,7 +24,7 @@ const stoves = [
   {
     id: "3",
     name: "Kenwood Stove 03",
-    image: "/kenwood-stoove-3.jfif",
+    image: "/kenwood-stoove-3.jpg",
     price: "Rs. 49,999",
     description:
       "A Kenwood stove option for customers looking for practical kitchen appliances.",
@@ -32,7 +32,7 @@ const stoves = [
   {
     id: "4",
     name: "Kenwood Stove 04",
-    image: "/kenwood-stoove-4.jfif",
+    image: "/kenwood-stoove-4.jpg",
     price: "Rs. 54,999",
     description:
       "Explore this Kenwood stove design as part of the ShopSphere kitchen collection.",
@@ -40,7 +40,7 @@ const stoves = [
   {
     id: "5",
     name: "Kenwood Stove 05",
-    image: "/kenwood-stoove-5.jfif",
+    image: "/kenwood-stoove-5.jpg",
     price: "Rs. 59,999",
     description:
       "Discover the fifth stove in our Kenwood collection at ShopSphere.",
